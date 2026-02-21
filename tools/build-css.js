@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build script: concatenates all @design-system/css source files
+ * Build script: concatenates all @cloudiverse/design-system source files
  * into a single dist/style.css. No external dependencies required.
  *
  * Usage: node tools/build-css.js
@@ -36,7 +36,7 @@ if (importPaths.length === 0) {
 }
 
 const timestamp = new Date().toISOString().split('T')[0];
-let output = `/* @design-system/css — Built ${timestamp} */\n`;
+let output = `/* @cloudiverse/design-system — Built ${timestamp} */\n`;
 output += `/* Source: packages/css/src/index.css */\n\n`;
 
 for (const filePath of importPaths) {

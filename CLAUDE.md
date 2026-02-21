@@ -6,7 +6,7 @@ Monorepo managed with **pnpm workspaces**.
 
 | Path | Package | Description |
 |------|---------|-------------|
-| [packages/css](packages/css/CLAUDE.md) | `@design-system/css` | Modular token-based CSS design system |
+| [packages/css](packages/css/CLAUDE.md) | `@cloudiverse/design-system` | Modular token-based CSS design system |
 
 ## Directory Conventions
 
@@ -19,7 +19,7 @@ Monorepo managed with **pnpm workspaces**.
 ## Creating a New Package from Scratch
 
 1. Create the directory: `packages/<name>/`, `apps/<name>/`, or `tools/<name>/`
-2. Add a `package.json` with `"name": "@design-system/<name>"`
+2. Add a `package.json` with `"name": "@cloudiverse/<name>"`
 3. Add a `CLAUDE.md` documenting conventions for that package
 4. Run `pnpm install` from the root to link workspaces
 
@@ -36,7 +36,7 @@ To bring an existing external project into the monorepo:
 
 2. **Update its `package.json`** name to follow the workspace convention:
    ```json
-   { "name": "@design-system/<name>" }
+   { "name": "@cloudiverse/<name>" }
    ```
 
 3. **Add a `CLAUDE.md`** to the package documenting its conventions (if it doesn't have one)
@@ -48,7 +48,7 @@ To bring an existing external project into the monorepo:
 
 5. **Verify** the package is recognized:
    ```bash
-   pnpm --filter @design-system/<name> <cmd>
+   pnpm --filter @cloudiverse/<name> <cmd>
    ```
 
 > **Git submodules:** If the external project must keep its own independent git history, use a submodule instead:
@@ -62,7 +62,7 @@ To use one workspace package from another (e.g., an app consuming the CSS packag
 // apps/my-app/package.json
 {
   "dependencies": {
-    "@design-system/css": "workspace:*"
+    "@cloudiverse/design-system": "workspace:*"
   }
 }
 ```
@@ -71,14 +71,30 @@ Then run `pnpm install` from root. pnpm will symlink the local package instead o
 
 From the CLI:
 ```bash
-pnpm --filter @design-system/my-app add @design-system/css --workspace
+pnpm --filter @cloudiverse/my-app add @cloudiverse/design-system --workspace
 ```
 
 ## Using the Design System in External Projects
 
-To consume `@design-system/css` from a separate project without copying files:
+### Method 1: npm install (recommended)
 
-### Method 1: `pnpm link --global` (recommended — for projects with npm/pnpm)
+```bash
+npm install @cloudiverse/design-system
+```
+
+**Import (bundler — Next.js, Vite, webpack):**
+```css
+@import '@cloudiverse/design-system';   /* → dist/style.css */
+```
+
+**Import (plain HTML):**
+```html
+<link rel="stylesheet" href="node_modules/@cloudiverse/design-system/dist/style.css">
+```
+
+### Method 2: Local live-sync with `pnpm link --global` (development only)
+
+Use this when you want changes to the design system source to reflect immediately in a consumer project without republishing.
 
 **Prerequisites:** Run `pnpm setup` once and open a new terminal so `PNPM_HOME` is in PATH.
 
@@ -88,55 +104,47 @@ cd packages/css
 pnpm link --global
 ```
 
-**In each consumer project** (run from the consumer project root):
+**In each consumer project:**
 ```bash
-pnpm link --global @design-system/css
+pnpm link --global @cloudiverse/design-system
 ```
 
-This creates a symlink at `node_modules/@design-system/css` → `packages/css/` here. Changes in the design system are immediately reflected — no reinstall needed.
+To remove: `pnpm unlink --global @cloudiverse/design-system`
 
-Import in HTML:
-```html
-<link rel="stylesheet" href="node_modules/@design-system/css/src/index.css">
-```
+### Method 3: Direct path reference (for HTML-only projects, no npm)
 
-Or via a bundler (Vite, webpack, etc.):
-```js
-import '@design-system/css/src/index.css'
-```
-
-To remove the link from a consumer: `pnpm unlink --global @design-system/css`
-
-### Method 2: Direct path reference (for HTML-only projects, no npm)
-
-Reference the CSS file by relative path — no tooling required:
 ```html
 <link rel="stylesheet" href="../design-system/packages/css/src/index.css">
 ```
 
-Adjust the path to match the actual directory relationship between the two projects.
+Adjust the relative path to match the actual directory relationship.
 
 ### Consumer project CLAUDE.md snippet
 
-Add this to the consumer project's `CLAUDE.md` so Claude Code knows the design system is in use. The quick reference is included inline so the AI does not need cross-repo file access.
+Add this to the consumer project's `CLAUDE.md`. Documentation links use GitHub raw URLs so Claude Code can fetch them with WebFetch from any machine.
 
 ````markdown
 ## Design System
 
-This project uses `@design-system/css` (v1.0.0) from the local design system monorepo.
+This project uses `@cloudiverse/design-system` (v1.0.0).
+
+**Install:**
+```bash
+npm install @cloudiverse/design-system
+```
 
 **Import (bundler — Next.js, Vite, webpack):**
 ```css
-@import '@design-system/css';        /* → dist/style.css */
+@import '@cloudiverse/design-system';       /* → dist/style.css */
 ```
 **Import (plain HTML):**
 ```html
-<link rel="stylesheet" href="node_modules/@design-system/css/dist/style.css">
+<link rel="stylesheet" href="node_modules/@cloudiverse/design-system/dist/style.css">
 ```
 
 **Framework note:** The design system sets `html { font-size: 62.5% }` (1rem = 10px).
 If using Tailwind or shadcn/ui, add `html { font-size: 100%; }` after the import.
-Full guide: `C:/Users/ADMIN-USER/Documents/GitHub/design-system/packages/css/docs/framework-integration.md`
+Full guide: https://raw.githubusercontent.com/CloudiverseHQ/design-system/main/packages/css/docs/framework-integration.md
 
 **Quick reference — do not guess these values:**
 - Neutral shades: `5 10 12 14 16 18 20 22 24 26 28 30 40 50 60 70 80 82 84 86 88 90 92 94 96 98 100`
@@ -146,17 +154,17 @@ Full guide: `C:/Users/ADMIN-USER/Documents/GitHub/design-system/packages/css/doc
 - NO responsive variants for: `opacity--` `aspect--` `line-clamp--` `radius--` `shadow--` `border` `padding--` `width--` `height--`
 - Only `.gap--*` and `.center--*` use double-selector (`.class.class`) in CSS source — write once in HTML
 
-**Full reference:** `C:/Users/ADMIN-USER/Documents/GitHub/design-system/packages/css/docs/ai-reference.md`
-**Contributor guide:** `C:/Users/ADMIN-USER/Documents/GitHub/design-system/packages/css/CLAUDE.md`
+**Full reference:** https://raw.githubusercontent.com/CloudiverseHQ/design-system/main/packages/css/docs/ai-reference.md
+**Contributor guide:** https://raw.githubusercontent.com/CloudiverseHQ/design-system/main/packages/css/CLAUDE.md
 ````
 
 ## Workspace Commands
 
 ```bash
 pnpm install                                   # Install all workspace deps
-pnpm --filter @design-system/css <cmd>         # Run command in a specific package
-pnpm -r <cmd>                                  # Run command in all packages
-pnpm --filter @design-system/my-app add pkg    # Add a dep to a specific package
+pnpm --filter @cloudiverse/design-system <cmd>         # Run command in a specific package
+pnpm -r <cmd>                                          # Run command in all packages
+pnpm --filter @cloudiverse/my-app add pkg              # Add a dep to a specific package
 ```
 
 ## Workspace Structure
@@ -166,7 +174,7 @@ design-system/
 ├── package.json           # Workspace root (private)
 ├── pnpm-workspace.yaml    # Declares packages/*, apps/*, tools/*
 ├── packages/              # Publishable packages
-│   └── css/               # @design-system/css — see packages/css/CLAUDE.md
+│   └── css/               # @cloudiverse/design-system — see packages/css/CLAUDE.md
 ├── apps/                  # Applications (internal, not published)
 └── tools/                 # Build tools, scripts, generators
 ```

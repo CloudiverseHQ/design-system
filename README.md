@@ -6,7 +6,7 @@ A monorepo for the design system and related tooling, managed with pnpm workspac
 
 | Package | Path | Description |
 |---------|------|-------------|
-| `@design-system/css` | [packages/css](packages/css/README.md) | Modular token-based CSS design system |
+| `@cloudiverse/design-system` | [packages/css](packages/css/README.md) | Modular token-based CSS design system |
 
 ## Getting Started
 

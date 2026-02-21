@@ -1,5 +1,5 @@
 {
-  "name": "@design-system/css",
+  "name": "@cloudiverse/design-system",
   "version": "1.0.0",
   "description": "Modular token-based CSS design system",
   "main": "src/index.css",

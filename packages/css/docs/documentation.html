@@ -126,6 +126,31 @@
             padding: 0.15em 0.45em;
             border-radius: var(--radius-xs);
             color: var(--brand-60);
+            cursor: pointer;
+            transition: background 0.15s;
+            position: relative;
+        }
+        code:hover {
+            background: var(--neutral-24);
+        }
+        code.copied::after {
+            content: 'Copied!';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neutral-80);
+            color: var(--neutral-10);
+            font-size: 1.1rem;
+            padding: 0.25em 0.6em;
+            border-radius: var(--radius-xs);
+            white-space: nowrap;
+            pointer-events: none;
+            animation: fadeOut 1s forwards;
+        }
+        @keyframes fadeOut {
+            0%, 60% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
         /* Color swatches */
@@ -255,8 +280,8 @@
 
         /* Toggle button */
         .mode-toggle {
-            background: var(--neutral-80);
-            color: var(--neutral-10);
+            background: #333;
+            color: #eee;
             border: none;
             padding: 0.6rem 1.4rem;
             border-radius: var(--radius-m);
@@ -265,7 +290,32 @@
             font-family: inherit;
             transition: background 0.2s;
         }
-        .mode-toggle:hover { background: var(--neutral-70); }
+        .mode-toggle:hover { background: #444; }
+
+        /* Header controls */
+        .doc-header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .theme-picker {
+            background: #333;
+            color: #eee;
+            border: none;
+            padding: 0.6rem 1.4rem;
+            border-radius: var(--radius-m);
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-family: inherit;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23aaa' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 3rem;
+        }
+        .theme-picker:hover { background: #444; }
+        .theme-picker option { background: #333; color: #eee; }
 
         /* Utility table */
         .util-table {
@@ -390,7 +440,17 @@
     <!-- Top Header -->
     <div class="doc-header">
         <h1 style="color: var(--neutral-90); font-family: 'Geist', sans-serif;">CSS Framework Docs</h1>
-        <button class="mode-toggle" onclick="toggleMode()">Toggle Dark Mode</button>
+        <div class="doc-header-controls">
+            <select class="theme-picker" onchange="setNeutral(this.value)">
+                <option value="warm">Warm (default)</option>
+                <option value="cool">Cool</option>
+                <option value="slate">Slate</option>
+                <option value="gray">Gray</option>
+                <option value="onyx">Onyx</option>
+                <option value="mono">Mono</option>
+            </select>
+            <button class="mode-toggle" onclick="toggleMode()">Toggle Dark Mode</button>
+        </div>
     </div>
 
     <div class="doc-layout">
@@ -737,6 +797,7 @@
                     <div><span class="text--underline-wavy" style="font-size:var(--text-l)">Wavy</span><br><code>.text--underline-wavy</code></div>
                     <div><span class="text--underline-dotted" style="font-size:var(--text-l)">Dotted</span><br><code>.text--underline-dotted</code></div>
                     <div><span class="text--underline-dashed" style="font-size:var(--text-l)">Dashed</span><br><code>.text--underline-dashed</code></div>
+                    <div><span class="text--underline text--decoration-none" style="font-size:var(--text-l)">None</span><br><code>.text--decoration-none</code></div>
                 </div>
 
                 <h3>Text Wrapping</h3>
@@ -761,6 +822,14 @@
                             <div style="display:flex;" class="gap--4xs"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                         <div>
+                            <div style="margin-bottom:0.3rem"><code>.gap--3xs</code></div>
+                            <div style="display:flex;" class="gap--3xs"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
+                        </div>
+                        <div>
+                            <div style="margin-bottom:0.3rem"><code>.gap--2xs</code></div>
+                            <div style="display:flex;" class="gap--2xs"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
+                        </div>
+                        <div>
                             <div style="margin-bottom:0.3rem"><code>.gap--xs</code></div>
                             <div style="display:flex;" class="gap--xs"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
@@ -780,9 +849,13 @@
                             <div style="margin-bottom:0.3rem"><code>.gap--xl</code></div>
                             <div style="display:flex;" class="gap--xl"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
+                        <div>
+                            <div style="margin-bottom:0.3rem"><code>.gap--2xl</code></div>
+                            <div style="display:flex;" class="gap--2xl"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
+                        </div>
                     </div>
                 </div>
-                <p style="color:var(--neutral-60);font-size:1.3rem">Responsive: <code>.gap--xl-s</code>, <code>.gap--l-m</code>, <code>.gap--m-xl</code>, <code>.gap--s-2xl</code></p>
+                <p style="color:var(--neutral-60);font-size:1.3rem">Also: <code>.col-gap--*</code> (column only) and <code>.row-gap--*</code> (row only) in sizes xs–2xl. <code>.gap--none</code> removes gap at ≤480px. Responsive: <code>.gap--xl-s</code>, <code>.gap--l-m</code>, <code>.gap--m-xl</code>, <code>.gap--s-2xl</code></p>
             </section>
 
             <!-- ============================
@@ -835,15 +908,41 @@
                 </div>
 
                 <h3>Auto-Fit Grids</h3>
-                <p style="color:var(--neutral-60);font-size:1.3rem;margin-bottom:1rem">Responsive grids using <code>auto-fit</code> + <code>minmax()</code>. Columns wrap automatically.</p>
+                <p style="color:var(--neutral-60);font-size:1.3rem;margin-bottom:1rem">Responsive grids using <code>auto-fit</code> + <code>minmax()</code>. Columns wrap automatically. Available: <code>.grid--auto-2</code> through <code>.grid--auto-12</code>. Add <code>.grid--auto-rows</code> to equalize row heights.</p>
                 <div class="demo-box">
                     <div style="margin-bottom:0.4rem"><code>.grid--auto-3</code></div>
                     <div class="grid--auto-3 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div></div>
 
                     <div style="margin-bottom:0.4rem"><code>.grid--auto-4</code></div>
-                    <div class="grid--auto-4 gap--xs"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div><div class="grid-cell">7</div><div class="grid-cell">8</div></div>
+                    <div class="grid--auto-4 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div><div class="grid-cell">7</div><div class="grid-cell">8</div></div>
+
+                    <p style="margin:0 0 0.4rem;color:var(--neutral-60);font-size:1.3rem">Ratio auto-fit variants keep fixed proportions instead of equal columns:</p>
+                    <div style="margin-bottom:0.4rem"><code>.grid--auto-1-2</code> (1:2 ratio, auto-fit)</div>
+                    <div class="grid--auto-1-2 gap--xs"><div class="grid-cell">1fr</div><div class="grid-cell">2fr</div></div>
                 </div>
-                <p style="color:var(--neutral-60);font-size:1.3rem">Responsive: <code>.grid--xl-2</code>, <code>.grid--l-1</code>, <code>.grid--m-2</code>, <code>.grid--s-1</code></p>
+
+                <h3>Grid Rows</h3>
+                <p style="color:var(--neutral-60);font-size:1.3rem;margin-bottom:1rem">Define explicit row counts on a grid container. Available: <code>.grid-rows--1</code> through <code>.grid-rows--12</code>. Responsive: <code>.grid-rows--l-2</code>, <code>.grid-rows--m-1</code>, etc.</p>
+                <div class="demo-box">
+                    <div style="margin-bottom:0.4rem"><code>.grid--3 .grid-rows--2</code> (3 columns, 2 defined rows)</div>
+                    <div class="grid--3 grid-rows--2 gap--xs"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div></div>
+                </div>
+
+                <h3>Alternating Layouts</h3>
+                <p style="color:var(--neutral-60);font-size:1.3rem;margin-bottom:1rem">Apply to a parent container to visually flip even-numbered child ratio grids (e.g. <code>.grid--1-2</code> becomes <code>.grid--2-1</code>). Uses <code>min-width</code> breakpoints. Available: <code>.grid--alternate-s</code>, <code>.grid--alternate-m</code>, <code>.grid--alternate-l</code>, <code>.grid--alternate-xl</code>.</p>
+                <div class="demo-box">
+                    <div class="grid--alternate-l" style="display:flex;flex-direction:column;gap:0.8rem">
+                        <div class="grid--2-1 gap--xs">
+                            <div class="grid-cell" style="padding:1rem">Content (2fr) — odd row, unchanged</div>
+                            <div class="grid-cell" style="padding:1rem">Image (1fr)</div>
+                        </div>
+                        <div class="grid--2-1 gap--xs">
+                            <div class="grid-cell" style="padding:1rem">Content (2fr) — even row, flips to 1-2</div>
+                            <div class="grid-cell" style="padding:1rem">Image (1fr)</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="color:var(--neutral-60);font-size:1.3rem">Responsive fixed grids: <code>.grid--xl-2</code>, <code>.grid--l-1</code>, <code>.grid--m-2</code>, <code>.grid--s-1</code></p>
             </section>
 
             <!-- ============================
@@ -863,10 +962,16 @@
                     <div style="margin-bottom:0.4rem"><code>.flex--row-reverse</code></div>
                     <div class="flex--row-reverse gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
 
+                    <div style="margin-bottom:0.4rem"><code>.flex--col-reverse</code></div>
+                    <div class="flex--col-reverse gap--xs" style="margin-bottom:1.4rem;max-width:20rem"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
+
                     <div style="margin-bottom:0.4rem"><code>.flex--wrap</code></div>
-                    <div class="flex--row flex--wrap gap--xs"><div class="grid-cell" style="width:30%">A</div><div class="grid-cell" style="width:30%">B</div><div class="grid-cell" style="width:30%">C</div><div class="grid-cell" style="width:30%">D</div></div>
+                    <div class="flex--row flex--wrap gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell" style="width:30%">A</div><div class="grid-cell" style="width:30%">B</div><div class="grid-cell" style="width:30%">C</div><div class="grid-cell" style="width:30%">D</div></div>
+
+                    <div style="margin-bottom:0.4rem"><code>.flex--grow</code> — children share available space equally</div>
+                    <div class="flex--row flex--grow gap--xs"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
                 </div>
-                <p style="color:var(--neutral-60);font-size:1.3rem">Responsive: <code>.flex--col-l</code>, <code>.flex--row-m</code>, <code>.flex--col-s</code></p>
+                <p style="color:var(--neutral-60);font-size:1.3rem">Responsive direction: <code>.flex--col-l</code>, <code>.flex--row-m</code>, <code>.flex--col-reverse-s</code>, <code>.flex--row-reverse-xl</code>. Note: <code>.flex--wrap</code> and <code>.flex--grow</code> have no responsive variants.</p>
             </section>
 
             <!-- ============================
@@ -958,7 +1063,7 @@
                         <tr><td><code>.display--none</code></td><td>display: none</td><td>-xl, -l, -m, -s</td></tr>
                         <tr><td><code>.display--block</code></td><td>display: block</td><td>-xl, -l, -m, -s</td></tr>
                         <tr><td><code>.display--inline-block</code></td><td>display: inline-block</td><td>-xl, -l, -m, -s</td></tr>
-                        <tr><td><code>.display--inline</code></td><td>display: inline</td><td>-xl, -l, -m, -s</td></tr>
+                        <tr><td><code>.display--inline</code></td><td>display: inline</td><td>—</td></tr>
                         <tr><td><code>.display--flex</code></td><td>display: flex</td><td>-xl, -l, -m, -s</td></tr>
                         <tr><td><code>.display--grid</code></td><td>display: grid</td><td>-xl, -l, -m, -s</td></tr>
                         <tr><td><code>.display--contents</code></td><td>display: contents</td><td>-xl, -l, -m, -s</td></tr>
@@ -978,12 +1083,20 @@
                 <h3>Width Utilities</h3>
                 <div class="demo-box">
                     <div class="width-bar width--10">.width--10</div>
+                    <div class="width-bar width--20">.width--20</div>
                     <div class="width-bar width--25">.width--25</div>
+                    <div class="width-bar width--30">.width--30</div>
                     <div class="width-bar width--33">.width--33</div>
+                    <div class="width-bar width--40">.width--40</div>
                     <div class="width-bar width--50">.width--50</div>
+                    <div class="width-bar width--60">.width--60</div>
                     <div class="width-bar width--66">.width--66</div>
+                    <div class="width-bar width--70">.width--70</div>
                     <div class="width-bar width--75">.width--75</div>
+                    <div class="width-bar width--80">.width--80</div>
+                    <div class="width-bar width--90">.width--90</div>
                     <div class="width-bar width--100">.width--100</div>
+                    <div class="width-bar" style="width:auto">.width--auto</div>
                 </div>
 
                 <h3>Height Utilities</h3>
@@ -1027,8 +1140,20 @@
                         <div style="text-align:center;margin-top:0.4rem"><code>.aspect--21-9</code></div>
                     </div>
                     <div>
+                        <div class="aspect-demo-box aspect--2-1">2:1</div>
+                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--2-1</code></div>
+                    </div>
+                    <div>
                         <div class="aspect-demo-box aspect--2-3" style="width:8rem">2:3</div>
                         <div style="text-align:center;margin-top:0.4rem"><code>.aspect--2-3</code></div>
+                    </div>
+                    <div>
+                        <div class="aspect-demo-box aspect--1-2" style="width:8rem">1:2</div>
+                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--1-2</code></div>
+                    </div>
+                    <div>
+                        <div class="aspect-demo-box aspect--3-4" style="width:8rem">3:4</div>
+                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--3-4</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--9-16" style="width:6rem">9:16</div>
@@ -1101,6 +1226,14 @@
                         <div style="margin-bottom:0.4rem"><code>.line-clamp--3</code></div>
                         <div class="clamp-demo line-clamp--3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</div>
                     </div>
+                    <div>
+                        <div style="margin-bottom:0.4rem"><code>.line-clamp--4</code></div>
+                        <div class="clamp-demo line-clamp--4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+                    </div>
+                    <div>
+                        <div style="margin-bottom:0.4rem"><code>.line-clamp--5</code></div>
+                        <div class="clamp-demo line-clamp--5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                    </div>
                 </div>
             </section>
 
@@ -1135,8 +1268,11 @@
                     <div class="border-bottom" style="padding:1.2rem"><code>.border-bottom</code></div>
                     <div class="border-left" style="padding:1.2rem"><code>.border-left</code></div>
                     <div class="border-right" style="padding:1.2rem"><code>.border-right</code></div>
+                    <div class="border-block" style="padding:1.2rem"><code>.border-block</code></div>
+                    <div class="border-inline" style="padding:1.2rem"><code>.border-inline</code></div>
                     <div class="border border--light" style="padding:1.2rem;border-radius:var(--radius-s)"><code>.border--light</code></div>
                     <div class="border border--dark" style="padding:1.2rem;border-radius:var(--radius-s)"><code>.border--dark</code></div>
+                    <div class="border border--none" style="padding:1.2rem;border-radius:var(--radius-s);background:var(--neutral-12)"><code>.border--none</code></div>
                 </div>
 
                 <h3>Dividers</h3>
@@ -1245,7 +1381,7 @@
                         <tr><td>Grid</td><td><code>.grid--l-2</code>, <code>.grid--s-1</code></td></tr>
                         <tr><td>Grid rows</td><td><code>.grid-rows--l-2</code></td></tr>
                         <tr><td>Grid positioning</td><td><code>.col-span--l-all</code>, <code>.col-start--m-1</code></td></tr>
-                        <tr><td>Order</td><td><code>.order--l-first</code>, <code>.order--s-last</code></td></tr>
+                        <tr><td>Order</td><td><code>.order--first-l</code>, <code>.order--last-s</code></td></tr>
                         <tr><td>Flex direction</td><td><code>.flex--col-l</code>, <code>.flex--row-m</code></td></tr>
                         <tr><td>Centering</td><td><code>.center--all-l</code>, <code>.center--left-m</code></td></tr>
                         <tr><td>Text alignment</td><td><code>.text--center-l</code>, <code>.text--left-s</code></td></tr>
@@ -1276,11 +1412,32 @@
     </div>
 
     <script>
+        // Click-to-copy on <code> elements
+        document.addEventListener('click', function(e) {
+            const code = e.target.closest('code');
+            if (!code) return;
+            const text = code.textContent.trim();
+            navigator.clipboard.writeText(text).then(function() {
+                code.classList.add('copied');
+                setTimeout(function() { code.classList.remove('copied'); }, 1000);
+            });
+        });
+
         // Dark mode toggle
         function toggleMode() {
             const html = document.documentElement;
             const current = html.getAttribute('data-color-mode');
             html.setAttribute('data-color-mode', current === 'dark' ? 'light' : 'dark');
+        }
+
+        // Neutral theme switcher
+        const neutralFamilyNames = ['cool', 'slate', 'gray', 'onyx', 'mono', 'warm'];
+        function setNeutral(family) {
+            const body = document.body;
+            neutralFamilyNames.forEach(n => body.classList.remove('neutral-' + n));
+            if (family !== 'warm') {
+                body.classList.add('neutral-' + family);
+            }
         }
 
         // Generate named color swatches

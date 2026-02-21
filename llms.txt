@@ -1,0 +1,54 @@
+# Design System
+
+A modular, token-based CSS design system. Framework-agnostic, no build tools required.
+
+## Documentation
+
+- [packages/css/docs/ai-reference.md](packages/css/docs/ai-reference.md) — Complete enumeration of all classes, tokens, and valid values. READ THIS before generating any code.
+- [packages/css/CLAUDE.md](packages/css/CLAUDE.md) — Architecture, naming conventions, how to add utilities (contributor guide)
+- [packages/css/docs/README.md](packages/css/docs/README.md) — Usage guide with dark mode, font setup examples
+
+## Quick Start
+
+```html
+<link rel="stylesheet" href="path/to/design-system/packages/css/src/index.css" />
+```
+
+Required fonts:
+```html
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+```
+
+## Critical Rules for Code Generation
+
+These are the most common AI errors — memorize before generating any HTML/CSS:
+
+1. **Utility classes use DOUBLE dash:** `.gap--m`, `.grid--3`, `.display--none`, `.radius--m`
+2. **Theme classes use SINGLE dash:** `.color-red`, `.neutral-cool` — NOT `.color--red`
+3. **Only `.gap--*` and `.center--*` use double-selector specificity** (`.class.class` in source) — no other class does this
+4. **Neutral shades are irregular** — valid values: `5, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 40, 50, 60, 70, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100` — `--neutral-15` DOES NOT EXIST
+5. **Color/brand shades are regular 10s:** `5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100` — `--brand-55` DOES NOT EXIST
+6. **`.color-red` remaps `--brand-*` tokens** — it does NOT set `--red-*` tokens directly
+7. **Always use `--neutral-*` tokens** (not `--neutral-warm-*` etc.) so components adapt to the active neutral family
+8. **Dark mode via HTML attribute:** `<html data-color-mode="dark">` — neutral scale inverts automatically
+9. **NO responsive variants for:** `opacity--`, `aspect--`, `object-fit--`, `line-clamp--`, `radius--`, `shadow--`, `border`, `divider`, `padding--`, `z--`, `width--`, `height--`, `relative`, `sticky`
+
+## Responsive Breakpoints
+
+| Suffix | Max-width | Use |
+|--------|-----------|-----|
+| `-xl`  | 1600px    | Large desktop |
+| `-l`   | 992px     | Tablet landscape |
+| `-m`   | 768px     | Tablet portrait |
+| `-s`   | 480px     | Mobile |
+
+Pattern: `.{block}--{breakpoint}-{modifier}` → e.g. `.gap--m-s`, `.grid--l-2`, `.flex--col-m`
+
+## Entry Point
+
+`packages/css/src/index.css` — imports all modules in order:
+1. Tokens (variables defined first)
+2. Foundations (typography classes)
+3. Layout (gap, grid, flex, centering)
+4. Utilities (display, visual, position, sizing, border, spacing)
+5. Themes (color/neutral overrides, dark mode — last so they cascade correctly)

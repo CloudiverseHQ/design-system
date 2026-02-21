@@ -1,0 +1,8 @@
+{
+  "name": "@design-system/css",
+  "version": "1.0.0",
+  "description": "Modular token-based CSS design system",
+  "main": "src/index.css",
+  "files": ["src", "dist"],
+  "private": false
+}

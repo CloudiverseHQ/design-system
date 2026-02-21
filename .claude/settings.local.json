@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test:*)",
+      "Bash(git mv:*)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)",
+      "Bash(pnpm install:*)",
+      "Bash(node --version:*)",
+      "Bash(npm:*)",
+      "Bash(pnpm ls:*)",
+      "Bash(pnpm list:*)",
+      "Bash(pnpm --recursive list:*)"
+    ]
+  }
+}

@@ -118,19 +118,37 @@ Adjust the path to match the actual directory relationship between the two proje
 
 ### Consumer project CLAUDE.md snippet
 
-Add this to the consumer project's `CLAUDE.md` so Claude Code knows the design system is in use:
+Add this to the consumer project's `CLAUDE.md` so Claude Code knows the design system is in use. The quick reference is included inline so the AI does not need cross-repo file access.
 
-```markdown
+````markdown
 ## Design System
 
-This project uses `@design-system/css` linked from the local design system monorepo.
+This project uses `@design-system/css` (v1.0.0) from the local design system monorepo.
 
-- **CSS import:** `<link rel="stylesheet" href="node_modules/@design-system/css/src/index.css">`
-- **AI reference:** `C:/Users/ADMIN-USER/Documents/GitHub/design-system/packages/css/docs/ai-reference.md`
-- **Contributor guide:** `C:/Users/ADMIN-USER/Documents/GitHub/design-system/packages/css/CLAUDE.md`
-
-Read the AI reference before generating any HTML/CSS that uses design system classes or tokens.
+**Import (bundler — Next.js, Vite, webpack):**
+```css
+@import '@design-system/css';        /* → dist/style.css */
 ```
+**Import (plain HTML):**
+```html
+<link rel="stylesheet" href="node_modules/@design-system/css/dist/style.css">
+```
+
+**Framework note:** The design system sets `html { font-size: 62.5% }` (1rem = 10px).
+If using Tailwind or shadcn/ui, add `html { font-size: 100%; }` after the import.
+Full guide: `C:/Users/ADMIN-USER/Documents/GitHub/design-system/packages/css/docs/framework-integration.md`
+
+**Quick reference — do not guess these values:**
+- Neutral shades: `5 10 12 14 16 18 20 22 24 26 28 30 40 50 60 70 80 82 84 86 88 90 92 94 96 98 100`
+- Color/brand shades: `5 10 20 30 40 50 60 70 80 90 100`
+- Utility classes use **double-dash**: `.gap--m` `.grid--3` `.display--none` `.radius--m`
+- Theme classes use **single-dash**: `.color-red` `.neutral-cool` (NOT `.color--red`)
+- NO responsive variants for: `opacity--` `aspect--` `line-clamp--` `radius--` `shadow--` `border` `padding--` `width--` `height--`
+- Only `.gap--*` and `.center--*` use double-selector (`.class.class`) in CSS source — write once in HTML
+
+**Full reference:** `C:/Users/ADMIN-USER/Documents/GitHub/design-system/packages/css/docs/ai-reference.md`
+**Contributor guide:** `C:/Users/ADMIN-USER/Documents/GitHub/design-system/packages/css/CLAUDE.md`
+````
 
 ## Workspace Commands
 

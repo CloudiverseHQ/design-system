@@ -3,6 +3,15 @@
   "version": "1.0.0",
   "description": "Modular token-based CSS design system",
   "main": "src/index.css",
+  "style": "dist/style.css",
+  "exports": {
+    ".": "./dist/style.css",
+    "./src": "./src/index.css",
+    "./src/*": "./src/*"
+  },
+  "scripts": {
+    "build": "node ../../tools/build-css.js"
+  },
   "files": ["src", "dist"],
   "private": false
 }

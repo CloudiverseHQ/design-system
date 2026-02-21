@@ -4,6 +4,10 @@ This document enumerates every valid class name, token, and value in the design 
 Read this before generating any code that uses this design system.
 Source of truth: the CSS files in `src/`. This reference is derived directly from them.
 
+> **Framework coexistence:** This design system sets `html { font-size: 62.5% }` (1rem = 10px). This conflicts with Tailwind CSS, shadcn/ui, and other frameworks that assume 1rem = 16px. See [framework-integration.md](framework-integration.md) for the workaround and token mapping guide.
+
+> **Distribution:** Use `dist/style.css` (pre-bundled, single file) for build-tool environments. Use `src/index.css` for native browser `@import` or PostCSS with `postcss-import`.
+
 ---
 
 ## CRITICAL RULES

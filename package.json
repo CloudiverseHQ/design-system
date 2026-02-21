@@ -2,5 +2,8 @@
   "name": "design-system",
   "version": "0.0.0",
   "private": true,
-  "description": "Design system monorepo"
+  "description": "Design system monorepo",
+  "scripts": {
+    "build": "pnpm -r build"
+  }
 }

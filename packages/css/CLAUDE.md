@@ -1,6 +1,7 @@
 # Design System
 
 > **AI code generation reference:** See [docs/ai-reference.md](docs/ai-reference.md) for the complete class/token enumeration, valid shade numbers, and responsive coverage matrix.
+> **Framework integration:** See [docs/framework-integration.md](docs/framework-integration.md) for Tailwind, shadcn/ui, Next.js, Vite, and PostCSS setup — including the `62.5%` font-size coexistence issue.
 
 A modular, token-based CSS design system. Framework-agnostic, no build tools required.
 

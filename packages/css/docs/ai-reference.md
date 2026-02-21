@@ -227,10 +227,6 @@ Each family has the same 27 shade values listed above.
 .text--mono-l     .text--mono-m     .text--mono-s     .text--mono-xs
 ```
 
-**Heading shorthand classes** (apply heading styles to any element)
-
-`.h1` `.h2` `.h3` `.h4` `.h5` `.h6`
-
 **HTML element defaults** (applied automatically, no class needed):
 - `h1` → display-m, `h2` → display-s, `h3` → heading-l, `h4` → heading-m, `h5` → title-l, `h6` → title-m
 - `body` → body-m

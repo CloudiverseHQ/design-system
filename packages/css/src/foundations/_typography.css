@@ -76,55 +76,6 @@ h6 {
     line-height: var(--title-line-height);
     letter-spacing: var(--title-letter-spacing);
 }
-/* Heading Utility Classes (element-independent) */
-.h1 {
-    color: var(--display-color);
-    font-family: var(--display-font-family);
-    font-size: var(--display-m-font-size);
-    font-weight: var(--display-font-weight);
-    line-height: var(--display-line-height);
-    letter-spacing: var(--display-letter-spacing);
-}
-.h2 {
-    color: var(--display-color);
-    font-family: var(--display-font-family);
-    font-size: var(--display-s-font-size);
-    font-weight: var(--display-font-weight);
-    line-height: var(--display-line-height);
-    letter-spacing: var(--display-letter-spacing);
-}
-.h3 {
-    color: var(--display-color);
-    font-family: var(--heading-font-family);
-    font-size: var(--heading-l-font-size);
-    font-weight: var(--heading-font-weight);
-    line-height: var(--heading-line-height);
-    letter-spacing: var(--heading-letter-spacing);
-}
-.h4 {
-    color: var(--display-color);
-    font-family: var(--heading-font-family);
-    font-size: var(--heading-m-font-size);
-    font-weight: var(--heading-font-weight);
-    line-height: var(--heading-line-height);
-    letter-spacing: var(--heading-letter-spacing);
-}
-.h5 {
-    color: var(--display-color);
-    font-family: var(--title-font-family);
-    font-size: var(--title-l-font-size);
-    font-weight: var(--title-font-weight);
-    line-height: var(--title-line-height);
-    letter-spacing: var(--title-letter-spacing);
-}
-.h6 {
-    color: var(--display-color);
-    font-family: var(--title-font-family);
-    font-size: var(--title-m-font-size);
-    font-weight: var(--title-font-weight);
-    line-height: var(--title-line-height);
-    letter-spacing: var(--title-letter-spacing);
-}
 
 .text--label-l {
     color: var(--display-color);

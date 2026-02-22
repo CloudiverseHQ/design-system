@@ -220,9 +220,14 @@ red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, indigo, viole
 **Brand colors:** `--brand-5` through `--brand-100` (default teal, overridable via `.color-*` classes)
 
 **Shade guidelines:**
-- 5-30: Light backgrounds, subtle UI
-- 40-60: Primary actions, interactive elements
-- 70-100: Text, strong contrast, borders
+- 5–30: Light backgrounds, subtle surfaces
+- 40–60: Primary actions, interactive elements — `color-60` is the BASE/primary shade
+- 70–100: Dark fills, text, strong contrast
+
+**Named and semantic colour contrast pairing** (applies to all colour families including `--error-*`, `--warning-*`, `--success-*`):
+- The `-60` shade is the switch point. Shades **below 60** are light — pair with `-100` for text/icons. Shades **above 60** are dark — pair with `-5` for text/icons.
+- `-50` and `-70` are edge shades: typically fail WCAG 4.5:1 AA for normal text but pass for large text (18px+) and decorative use (3:1). Do not use them for body text.
+- `-60` meets 4.5:1 with one palette end — which end depends on hue, verify per family.
 
 **Text contrast rule:** Text must never be lighter than `--neutral-50`. Ideally use `--neutral-60` or darker for all text content. Use `--neutral-60` for secondary/muted text; `--neutral-70`–`--neutral-90` for body and heading text.
 

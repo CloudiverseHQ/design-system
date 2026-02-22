@@ -634,6 +634,14 @@
 
                 <h3>Named Colors</h3>
                 <div class="demo-box" id="named-colors-container"></div>
+
+                <h3>Contrast Pairing</h3>
+                <div class="demo-box">
+                    <p style="margin:0 0 0.8rem">This rule applies to all named families <strong>and</strong> semantic colours (<code>error</code>, <code>warning</code>, <code>success</code>). The <strong><code>-60</code> shade is the BASE</strong> — the primary shade and the contrast switch point for each family.</p>
+                    <p style="margin:0 0 0.8rem">Shades <strong>below 60</strong> are light backgrounds — use the <code>-100</code> shade for text/icons on them. Shades <strong>above 60</strong> are dark — use the <code>-5</code> shade for text/icons.</p>
+                    <p style="margin:0 0 0.8rem">The <code>-60</code> shade is the switch point: depending on hue it meets 4.5:1 AA with either the <code>-5</code> or <code>-100</code> end of the palette.</p>
+                    <p style="margin:0;color:var(--neutral-60);font-size:var(--text-s)"><strong>Edge shades:</strong> <code>-50</code> and <code>-70</code> typically fail WCAG 4.5:1 AA for normal text but pass for large text (18px+) and decorative use (3:1).</p>
+                </div>
             </section>
 
             <!-- ============================

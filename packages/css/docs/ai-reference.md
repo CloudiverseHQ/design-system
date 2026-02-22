@@ -53,6 +53,24 @@ Source of truth: the CSS files in `src/`. This reference is derived directly fro
 - Use `--neutral-60` or darker for text; `--neutral-60` is the ideal minimum for readable text
 - Body/heading text: `--neutral-70` through `--neutral-90`; secondary/muted text: `--neutral-60`
 
+### Named and semantic colour contrast
+
+Applies to all named colour families (`--red-*`, `--green-*`, etc.), semantic colours (`--error-*`, `--warning-*`, `--success-*`), and brand/color alias tokens (`--color-*`).
+
+The `-60` shade is the BASE — the primary shade and the contrast switch point for each family.
+
+**Contrast pairing (light mode):**
+
+| Shade range | Background type | Text/icon contrast pair |
+|---|---|---|
+| `*-5` → `*-50` | Light | `*-100` |
+| `*-60` | Switch point | `*-5` or `*-100` (hue-dependent — check per family) |
+| `*-70` → `*-100` | Dark | `*-5` |
+
+**Edge shades:**
+- `*-50` and `*-70` typically **fail 4.5:1 AA** for normal-size text — do not use for body copy
+- `*-50` and `*-70` generally **pass 3:1** — safe for large text (18px+ / 14px bold) and decorative elements
+
 ### Color theming
 
 - `.color-red` remaps ALL `--brand-*` tokens (5–100) to red shades — does NOT affect `--red-*` tokens directly

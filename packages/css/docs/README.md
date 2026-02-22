@@ -227,6 +227,103 @@ Fluid font sizes:
 
 **Named colors:** `--red-60`, `--green-60`, `--blue-60`, `--violet-60`, etc. (each with 5-100 scale).
 
+### Extending with custom palettes
+
+Add custom colours in your app CSS, imported **after** the design system. Hook into the two indirection layers — do not override `--color-*` or `--neutral-*` directly.
+
+#### Global primary colour override
+
+Set `--brand-*` at `:root`. All 11 shades can be set; dark-mode inversion uses them automatically:
+
+```css
+/* app.css */
+:root {
+  --brand-5  : #fbf5f9;
+  --brand-10 : #f0e4ec;
+  --brand-20 : #d9c2d3;
+  --brand-30 : #c3a1ba;
+  --brand-40 : #ac81a1;
+  --brand-50 : #956189;
+  --brand-60 : #7e4271;
+  --brand-70 : #6b3660;
+  --brand-80 : #592b4f;
+  --brand-90 : #47203f;
+  --brand-100: #36162f;
+}
+```
+
+#### Scoped named colour class
+
+Create a `.color-{name}` class that remaps `--brand-5` through `--brand-100`. Apply it to any container to scope that colour as the active brand/accent:
+
+```css
+.color-mauve {
+  --brand-5  : #fbf5f9;
+  --brand-10 : #f0e4ec;
+  --brand-20 : #d9c2d3;
+  --brand-30 : #c3a1ba;
+  --brand-40 : #ac81a1;
+  --brand-50 : #956189;
+  --brand-60 : #7e4271;
+  --brand-70 : #6b3660;
+  --brand-80 : #592b4f;
+  --brand-90 : #47203f;
+  --brand-100: #36162f;
+}
+```
+
+```html
+<div class="color-mauve">
+  <!-- --color-* tokens resolve to mauve shades here, dark-mode inversion included -->
+</div>
+```
+
+#### Custom neutral family class
+
+Create a `.neutral-{name}` class that remaps all 25 `--neutral-default-*` shades, plus the three text token aliases:
+
+```css
+.neutral-sand {
+  --neutral-default    : var(--neutral-default-60);
+  --neutral-default-5  : #f8f7f4;
+  --neutral-default-10 : #eceae7;
+  --neutral-default-12 : #e7e5e2;
+  --neutral-default-14 : #e2e0dc;
+  --neutral-default-16 : #dcdbd7;
+  --neutral-default-18 : #d7d6d2;
+  --neutral-default-20 : #d2d1cc;
+  --neutral-default-22 : #ceccc7;
+  --neutral-default-24 : #c9c7c2;
+  --neutral-default-26 : #c4c2bd;
+  --neutral-default-28 : #bfbdb8;
+  --neutral-default-30 : #bab8b2;
+  --neutral-default-40 : #a2a099;
+  --neutral-default-50 : #8b8881;
+  --neutral-default-60 : #747169;
+  --neutral-default-70 : #5e5c55;
+  --neutral-default-80 : #494741;
+  --neutral-default-82 : #45433e;
+  --neutral-default-84 : #413f3a;
+  --neutral-default-86 : #3d3b36;
+  --neutral-default-88 : #393733;
+  --neutral-default-90 : #35332f;
+  --neutral-default-92 : #31302b;
+  --neutral-default-94 : #2d2c28;
+  --neutral-default-96 : #292824;
+  --neutral-default-98 : #262421;
+  --neutral-default-100: #22211e;
+  --display-color: var(--neutral-default-90);
+  --text-color   : var(--neutral-default-90);
+  --mono-color   : var(--neutral-default-90);
+}
+```
+
+```html
+<div class="neutral-sand">
+  <!-- All --neutral-* tokens inside resolve to sand shades, dark-mode inversion included -->
+</div>
+```
+
 ---
 
 ## Utility Classes

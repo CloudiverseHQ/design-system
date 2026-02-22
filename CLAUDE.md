@@ -126,7 +126,7 @@ Add this to the consumer project's `CLAUDE.md`. Documentation links use GitHub r
 ````markdown
 ## Design System
 
-This project uses `@cloudiverse/design-system` (v1.0.0).
+This project uses `@cloudiverse/design-system` (v1.1.0).
 
 **Install:**
 ```bash
@@ -153,6 +153,15 @@ Full guide: https://raw.githubusercontent.com/CloudiverseHQ/design-system/main/p
 - Theme classes use **single-dash**: `.color-red` `.neutral-cool` (NOT `.color--red`)
 - NO responsive variants for: `opacity--` `aspect--` `line-clamp--` `radius--` `shadow--` `border` `padding--` `width--` `height--`
 - Only `.gap--*` and `.center--*` use double-selector (`.class.class`) in CSS source — write once in HTML
+
+**Custom palettes — extension points, do not guess:**
+- **Global primary colour** — override `--brand-5` through `--brand-100` at `:root` in your app CSS (imported after the design system). Dark-mode inversion works automatically. Do NOT override `--color-*` directly.
+  ```css
+  :root { --brand-5: #fbf5f9; --brand-60: #7e4271; --brand-100: #36162f; }
+  ```
+- **Scoped named colour** — create a `.color-{name}` class that maps `--brand-5` through `--brand-100` (11 shades: 5 10 20 30 40 50 60 70 80 90 100) to raw values. Apply the class to any container.
+- **Custom neutral family** — create a `.neutral-{name}` class that maps `--neutral-default-5` through `--neutral-default-100` (25 shades: 5 10 12 14 16 18 20 22 24 26 28 30 40 50 60 70 80 82 84 86 88 90 92 94 96 98 100) to raw values, then add `--display-color`, `--text-color`, and `--mono-color` each set to `var(--neutral-default-90)`. Apply the class to any container.
+- Raw values go directly inside the class — do not create intermediate `--myColor-*` variables.
 
 **Full reference:** https://raw.githubusercontent.com/CloudiverseHQ/design-system/main/packages/css/docs/ai-reference.md
 **Contributor guide:** https://raw.githubusercontent.com/CloudiverseHQ/design-system/main/packages/css/CLAUDE.md

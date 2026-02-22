@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented in this file.
 
+## v1.1.2 - 2026-02-22
+
+### Fixed
+- Bumped `@cloudiverse/design-system` package version to `1.1.2` so the pushed tag and package version match for the publish workflow.
+
+### Notes
+- This release resolves the failed publish run for tag `v1.1.1`, where `packages/css/package.json` was still `1.1.0`.
+
 ## v1.1.1 - 2026-02-22
 
 ### Changed

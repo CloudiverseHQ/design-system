@@ -346,7 +346,8 @@ Components live in the consuming project, not in this design system. Build them 
 - Use **BEM** for component internals (`.block__element--modifier`)
 - Reference **design tokens** for all spacing, colors, effects
 - Compose with **utility classes** for layout (grid, flex, gap, radius, shadow)
-- Use `--neutral-*` and `--color-*` so components adapt to themes and dark mode
+- Use `--color-*` (not `--brand-*`) for all accent/primary colour in components — `--brand-*` is the raw palette and does not invert in dark mode
+- Use `--neutral-*` (not `--neutral-warm-*` etc.) so components adapt to the active neutral family and dark mode
 - Keep component CSS minimal — leverage the utility layer
 
 ## Bricks Builder Integration

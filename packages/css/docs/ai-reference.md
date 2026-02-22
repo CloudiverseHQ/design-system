@@ -76,6 +76,7 @@ The `-60` shade is the BASE — the primary shade and the contrast switch point 
 - `.color-red` remaps ALL `--brand-*` tokens (5–100) to red shades — does NOT affect `--red-*` tokens directly
 - In dark mode, `--color-*` tokens invert: `--color-5` → brand-100 equivalent, `--color-60` → brand-40 equivalent
 - Always use `--neutral-*` (not `--neutral-warm-*` or `--neutral-cool-*`) for theme-adaptive components
+- **Never use `--brand-*` tokens in component or UI CSS** — they are the raw palette and do NOT invert in dark mode. Use `--color-*` instead. Rule: `--brand-*` is only for theme definitions (inside `.color-{name}` classes or overriding at `:root`); `--color-*` is for all UI and component usage.
 
 ---
 
@@ -805,7 +806,7 @@ Utility classes for applying mode to any element (not just html):
 **Red-branded section**
 ```html
 <section class="color-red padding--l">
-  <button style="background: var(--brand-60); color: white;">Primary action</button>
+  <button style="background: var(--color-60); color: white;">Primary action</button>
 </section>
 ```
 
@@ -865,6 +866,7 @@ Utility classes for applying mode to any element (not just html):
 | `.padding--2xl` | `.padding--xl` | Max section padding size is xl |
 | `.radius--none` | `border-radius: 0` (inline/custom CSS) | No `.radius--none` class exists |
 | `--neutral-warm-14` | `--neutral-14` | Use default neutral tokens, not family-specific |
+| `var(--brand-60)` in UI CSS | `var(--color-60)` | `--brand-*` is the raw palette — it does not invert in dark mode; `--color-*` is the mode-aware alias |
 | `.flex--wrap-m` | `.flex--wrap` (base only) | flex--wrap has no responsive variants |
 | `.display--inline-m` | Use `.display--none-m` or another value | display--inline has no responsive variants |
 | `.gap--3xl` | `.gap--2xl` (max gap class) | Gap classes stop at 2xl; use `--space-3xl` token in custom CSS |

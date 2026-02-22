@@ -53,6 +53,13 @@
             color: var(--neutral-90);
             background: var(--neutral-18);
         }
+        .doc-sidebar a.is-active {
+            color: var(--neutral-90);
+            background: var(--neutral-20);
+            font-weight: 600;
+            border-left: 2px solid var(--color-60);
+            padding-left: 1.4rem;
+        }
         .doc-sidebar .nav-title {
             font-weight: 600;
             color: var(--neutral-90);
@@ -125,7 +132,7 @@
             background: var(--neutral-18);
             padding: 0.15em 0.45em;
             border-radius: var(--radius-xs);
-            color: var(--brand-60);
+            color: var(--color-60);
             cursor: pointer;
             transition: background 0.15s;
             position: relative;
@@ -207,21 +214,21 @@
         }
         .space-bar-fill {
             height: 2.4rem;
-            background: var(--brand-50);
+            background: var(--color-50);
             border-radius: var(--radius-xs);
             transition: width 0.3s;
         }
 
         /* Grid demo cells */
         .grid-cell {
-            background: var(--brand-10);
-            border: 1px solid var(--brand-30);
+            background: var(--color-10);
+            border: 1px solid var(--color-30);
             border-radius: var(--radius-s);
             padding: 1rem;
             text-align: center;
             font-size: 1.2rem;
             font-family: "Roboto Mono", monospace;
-            color: var(--brand-70);
+            color: var(--color-70);
             min-height: 4rem;
             display: flex;
             align-items: center;
@@ -232,14 +239,14 @@
         .radius-demo {
             width: 8rem;
             height: 8rem;
-            background: var(--brand-20);
-            border: 2px solid var(--brand-50);
+            background: var(--color-20);
+            border: 2px solid var(--color-50);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.1rem;
             font-family: "Roboto Mono", monospace;
-            color: var(--brand-80);
+            color: var(--color-80);
         }
 
         /* Shadow demo cards */
@@ -267,15 +274,15 @@
         .center-demo-child {
             width: 6rem;
             height: 4rem;
-            background: var(--brand-20);
-            border: 1px solid var(--brand-40);
+            background: var(--color-20);
+            border: 1px solid var(--color-40);
             border-radius: var(--radius-s);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1rem;
             font-family: "Roboto Mono", monospace;
-            color: var(--brand-70);
+            color: var(--color-70);
         }
 
         /* Toggle button */
@@ -354,21 +361,21 @@
 
         /* Width bar demo */
         .width-bar {
-            background: var(--brand-20);
-            border: 1px solid var(--brand-40);
+            background: var(--color-20);
+            border: 1px solid var(--color-40);
             border-radius: var(--radius-xs);
             padding: 0.5rem 1rem;
             margin-bottom: 0.5rem;
             font-family: "Roboto Mono", monospace;
             font-size: 1.1rem;
-            color: var(--brand-70);
+            color: var(--color-70);
         }
 
         /* Opacity demo */
         .opacity-chip {
             width: 6rem;
             height: 4rem;
-            background: var(--brand-60);
+            background: var(--color-60);
             border-radius: var(--radius-s);
             display: flex;
             align-items: center;
@@ -389,22 +396,22 @@
 
         /* Aspect ratio demo */
         .aspect-demo-box {
-            background: var(--brand-10);
-            border: 1px solid var(--brand-30);
+            background: var(--color-10);
+            border: 1px solid var(--color-30);
             border-radius: var(--radius-s);
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: "Roboto Mono", monospace;
             font-size: 1.1rem;
-            color: var(--brand-70);
+            color: var(--color-70);
             width: 14rem;
         }
 
         /* Section padding demo */
         .padding-demo-outer {
-            background: var(--brand-10);
-            border: 1px solid var(--brand-30);
+            background: var(--color-10);
+            border: 1px solid var(--color-30);
             border-radius: var(--radius-m);
             margin-bottom: 1rem;
         }
@@ -521,11 +528,11 @@
                 <h3>Section Spacing</h3>
                 <p class="section-desc">Larger spacing scale for vertical rhythm between full-width page sections.</p>
                 <div class="demo-box">
-                    <div class="space-bar"><span class="space-bar-label">--section-space-xs</span><div class="space-bar-fill" style="width: var(--section-space-xs); background: var(--brand-40)"></div></div>
-                    <div class="space-bar"><span class="space-bar-label">--section-space-s</span><div class="space-bar-fill" style="width: var(--section-space-s); background: var(--brand-40)"></div></div>
-                    <div class="space-bar"><span class="space-bar-label">--section-space-m</span><div class="space-bar-fill" style="width: var(--section-space-m); background: var(--brand-40)"></div></div>
-                    <div class="space-bar"><span class="space-bar-label">--section-space-l</span><div class="space-bar-fill" style="width: var(--section-space-l); background: var(--brand-40)"></div></div>
-                    <div class="space-bar"><span class="space-bar-label">--section-space-xl</span><div class="space-bar-fill" style="width: var(--section-space-xl); background: var(--brand-40)"></div></div>
+                    <div class="space-bar"><span class="space-bar-label">--section-space-xs</span><div class="space-bar-fill" style="width: var(--section-space-xs); background: var(--color-40)"></div></div>
+                    <div class="space-bar"><span class="space-bar-label">--section-space-s</span><div class="space-bar-fill" style="width: var(--section-space-s); background: var(--color-40)"></div></div>
+                    <div class="space-bar"><span class="space-bar-label">--section-space-m</span><div class="space-bar-fill" style="width: var(--section-space-m); background: var(--color-40)"></div></div>
+                    <div class="space-bar"><span class="space-bar-label">--section-space-l</span><div class="space-bar-fill" style="width: var(--section-space-l); background: var(--color-40)"></div></div>
+                    <div class="space-bar"><span class="space-bar-label">--section-space-xl</span><div class="space-bar-fill" style="width: var(--section-space-xl); background: var(--color-40)"></div></div>
                 </div>
             </section>
 
@@ -1321,18 +1328,18 @@
                  ============================ -->
             <section class="doc-section" id="dark-light">
                 <h2>Dark / Light Mode</h2>
-                <p class="section-desc">Toggle via <code>html[data-color-mode="dark"]</code> attribute or <code>.dark</code> / <code>.light</code> classes. Neutral and brand scales invert automatically.</p>
+                <p class="section-desc">Toggle via <code>html[data-color-mode="dark"]</code> attribute or <code>.dark</code> / <code>.light</code> classes. Neutral and color scales invert automatically.</p>
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.6rem">
                     <div class="mode-demo light" style="background:var(--neutral-10)">
                         <div style="font-weight:600;margin-bottom:1rem;font-size:1.5rem;color:var(--neutral-90)">Light Mode</div>
                         <div style="background:var(--neutral-5);padding:1rem;border-radius:var(--radius-s);margin-bottom:0.8rem;color:var(--neutral-90)">Card on neutral-5</div>
-                        <div style="background:var(--brand-60);color:white;padding:0.8rem 1.2rem;border-radius:var(--radius-s);display:inline-block">Brand Button</div>
+                        <div style="background:var(--color-60);color:white;padding:0.8rem 1.2rem;border-radius:var(--radius-s);display:inline-block">Primary Button</div>
                     </div>
                     <div class="mode-demo dark" style="background:var(--neutral-10)">
                         <div style="font-weight:600;margin-bottom:1rem;font-size:1.5rem;color:var(--neutral-90)">Dark Mode</div>
                         <div style="background:var(--neutral-5);padding:1rem;border-radius:var(--radius-s);margin-bottom:0.8rem;color:var(--neutral-90)">Card on neutral-5</div>
-                        <div style="background:var(--brand-60);color:white;padding:0.8rem 1.2rem;border-radius:var(--radius-s);display:inline-block">Brand Button</div>
+                        <div style="background:var(--color-60);color:white;padding:0.8rem 1.2rem;border-radius:var(--radius-s);display:inline-block">Primary Button</div>
                     </div>
                 </div>
 
@@ -1484,6 +1491,63 @@
                 chip.innerHTML = `.color-${color}`;
                 overrideContainer.appendChild(chip);
             });
+        })();
+
+        // Sidebar active section sync on scroll
+        (function() {
+            const navLinks = Array.from(document.querySelectorAll('.doc-sidebar a[href^="#"]'));
+            const sectionMap = new Map();
+
+            navLinks.forEach(link => {
+                const id = link.getAttribute('href').slice(1);
+                const section = document.getElementById(id);
+                if (section) {
+                    sectionMap.set(id, section);
+                }
+            });
+
+            let activeId = '';
+            const setActive = (id) => {
+                if (!id || id === activeId) return;
+                activeId = id;
+
+                navLinks.forEach(link => {
+                    const linkId = link.getAttribute('href').slice(1);
+                    link.classList.toggle('is-active', linkId === id);
+                });
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                const visible = entries
+                    .filter(entry => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+                if (visible.length > 0) {
+                    setActive(visible[0].target.id);
+                }
+            }, {
+                root: null,
+                rootMargin: '-25% 0px -55% 0px',
+                threshold: [0.1, 0.25, 0.5, 0.75]
+            });
+
+            sectionMap.forEach(section => observer.observe(section));
+
+            // Keep state responsive on hash navigation as well
+            window.addEventListener('hashchange', () => {
+                const id = window.location.hash.replace('#', '');
+                if (sectionMap.has(id)) {
+                    setActive(id);
+                }
+            });
+
+            // Initial active link
+            const initialHash = window.location.hash.replace('#', '');
+            if (sectionMap.has(initialHash)) {
+                setActive(initialHash);
+            } else if (sectionMap.size > 0) {
+                setActive(sectionMap.keys().next().value);
+            }
         })();
     </script>
 </body>

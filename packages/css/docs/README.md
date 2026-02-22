@@ -28,40 +28,55 @@ The design system uses **Geist** (body/display) and **Roboto Mono** (monospace).
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
 ```
 
+### Form element resets
+
+`button`, `input`, `select`, and `textarea` elements are reset at zero specificity (via `:where()`), so any class or element rule overrides them without specificity tricks:
+
+```css
+/* No extra specificity needed — this just works */
+.my-button {
+  background: var(--color-60);
+  padding: var(--space-xs) var(--space-m);
+}
+```
+
 ---
 
 ## Dark / Light Mode
 
-The color mode is controlled by the `data-color-mode` attribute on the `<html>` element. The design system provides three selectors:
+The design system uses a three-way logic that matches the behaviour of Bootstrap 5.3, Radix, and other modern systems:
 
-| Selector | When it applies |
+| State | Result |
 |---|---|
-| `html[data-color-mode="dark"]` | Dark mode active |
-| `html[data-color-mode="light"]` | Light mode active |
-| `html:not([data-color-mode])` | No attribute set (defaults to light) |
+| No `data-color-mode` attribute | Follows OS `prefers-color-scheme` |
+| `data-color-mode="light"` | Forced light, regardless of OS |
+| `data-color-mode="dark"` | Forced dark, regardless of OS |
+
+If your app manages mode programmatically, set `data-color-mode` on `<html>`. If you omit it, the page automatically follows the user's OS preference.
 
 ### Implementing the toggle
 
-Set `data-color-mode` on the `<html>` element and persist the choice to `localStorage`:
+Read the OS preference as the default, then let the user override it:
 
 ```js
+function getInitialMode() {
+  const saved = localStorage.getItem('color-mode');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
 function setColorMode(mode) {
-  // mode should be 'dark' or 'light'
   document.documentElement.setAttribute('data-color-mode', mode);
   localStorage.setItem('color-mode', mode);
 }
 
-// Toggle example
 function toggleColorMode() {
   const current = document.documentElement.getAttribute('data-color-mode') || 'light';
   setColorMode(current === 'dark' ? 'light' : 'dark');
 }
 
 // Restore on page load
-const saved = localStorage.getItem('color-mode');
-if (saved) {
-  document.documentElement.setAttribute('data-color-mode', saved);
-}
+setColorMode(getInitialMode());
 ```
 
 ### React example
@@ -69,7 +84,8 @@ if (saved) {
 ```tsx
 const [darkMode, setDarkMode] = useState(() => {
   const saved = localStorage.getItem('color-mode');
-  return saved ? saved === 'dark' : true; // default dark
+  if (saved) return saved === 'dark';
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
 });
 
 useEffect(() => {
@@ -84,9 +100,21 @@ useEffect(() => {
 </button>
 ```
 
+### Scoped theming with `.dark` and `.light`
+
+Apply `.dark` or `.light` to any element to scope the token inversion within that subtree, regardless of the page-level mode:
+
+```html
+<!-- Force a section dark on an otherwise light page -->
+<div class="dark">
+  <!-- --neutral-* and --color-* tokens are inverted here -->
+  <!-- Child elements with color-* or neutral-* classes are also correctly inverted -->
+</div>
+```
+
 ### How it works
 
-When `data-color-mode="dark"` is set, the design system **inverts the neutral scale**. The `--neutral-10` token (normally the lightest shade) maps to the darkest value, and `--neutral-90` (normally darkest) maps to the lightest. This means you write your CSS once using neutral tokens and both modes work automatically:
+When dark mode is active (via OS preference, `data-color-mode`, or `.dark`), the design system **inverts the neutral scale**. The `--neutral-10` token (normally the lightest shade) maps to the darkest value, and `--neutral-90` (normally darkest) maps to the lightest. This means you write your CSS once using neutral tokens and both modes work automatically:
 
 ```css
 body {
@@ -183,7 +211,17 @@ Fluid font sizes:
 
 ### Colors
 
-**Brand:** `--brand-5` through `--brand-100` (light to dark). Override with color classes like `color-red`, `color-purple`, etc.
+**Brand/primary:** `--brand-5` through `--brand-100` are the single customisation point. Set them at `:root` to theme the entire system — the dark-mode inversion continues to work correctly:
+
+```css
+:root {
+  --brand-5:   #fef2f2;
+  --brand-60:  #dc2626; /* replaces the default teal primary */
+  --brand-100: #450a0a;
+}
+```
+
+**Color aliases:** `--color-5` through `--color-100` reference `--brand-*` by default and are available at `:root` specificity. Apply color theme classes (`color-red`, `color-purple`, etc.) to containers to remap the brand palette.
 
 **Semantic:** `--success-60`, `--error-60`, `--warning-60` plus their full 5-100 scales.
 

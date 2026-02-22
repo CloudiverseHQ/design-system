@@ -82,6 +82,7 @@ npm install @cloudiverse/design-system
 
 | Resource | Description |
 |----------|-------------|
+| [Changelog](CHANGELOG.md) | Versioned release notes and commit summaries |
 | [AI Reference](packages/css/docs/ai-reference.md) | Every valid class, token, and value — read this before generating code |
 | [Framework Integration](packages/css/docs/framework-integration.md) | Using alongside Tailwind, shadcn/ui, Next.js, Vite, etc. |
 | [Visual Docs](packages/css/docs/documentation.html) | Interactive component demos (open locally in browser) |

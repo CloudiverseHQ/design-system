@@ -1,8 +1,10 @@
-# Design System
+# @tale-ui/core
 
 [![Publish design system](https://github.com/Tale-UI/core/actions/workflows/publish.yml/badge.svg)](https://github.com/Tale-UI/core/actions/workflows/publish.yml)
 
-A modular, token-based CSS design system with fluid responsive scaling, comprehensive color theming, and dark mode support. Framework-agnostic — works with any stack.
+The foundational CSS layer of the Tale UI Design System — design tokens, layout utilities, and theming primitives. Framework-agnostic, no build tools required.
+
+> **Scope:** This package provides the *foundations* — tokens, layout, utilities, and theming. It does **not** include UI components (buttons, modals, forms, etc.). Component libraries are separate packages that depend on this one.
 
 ## Features
 

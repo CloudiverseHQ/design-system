@@ -1,13 +1,3 @@
-body.bricks-is-frontend :focus {
-    outline: none;
-    box-shadow: none;
-}
-body.bricks-is-frontend :focus-visible {
-    outline-width: 1px;
-    outline-style: dotted;
-    outline-offset: 1px;
-    outline-color: var(--neutral-80);
-}
 :where(p) {
     margin: 0 0 calc(var(--text-line-height) * 1em);
 }

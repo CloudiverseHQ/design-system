@@ -6,7 +6,7 @@ const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
 const packageJsonPath = path.join(rootDir, 'packages', 'css', 'package.json');
-const packageName = '@cloudiverse/design-system';
+const packageName = '@tale-ui/core';
 
 function run(command, options = {}) {
     const { silent = false } = options;

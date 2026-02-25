@@ -6,7 +6,7 @@ Monorepo managed with **pnpm workspaces**.
 
 | Path | Package | Description |
 |------|---------|-------------|
-| [packages/css](packages/css/CLAUDE.md) | `@cloudiverse/design-system` | Modular token-based CSS design system |
+| [packages/css](packages/css/CLAUDE.md) | `@tale-ui/core` | Modular token-based CSS design system |
 
 ## Directory Conventions
 
@@ -19,7 +19,7 @@ Monorepo managed with **pnpm workspaces**.
 ## Creating a New Package from Scratch
 
 1. Create the directory: `packages/<name>/`, `apps/<name>/`, or `tools/<name>/`
-2. Add a `package.json` with `"name": "@cloudiverse/<name>"`
+2. Add a `package.json` with `"name": "@tale-ui/<name>"`
 3. Add a `CLAUDE.md` documenting conventions for that package
 4. Run `pnpm install` from the root to link workspaces
 
@@ -36,7 +36,7 @@ To bring an existing external project into the monorepo:
 
 2. **Update its `package.json`** name to follow the workspace convention:
    ```json
-   { "name": "@cloudiverse/<name>" }
+   { "name": "@tale-ui/<name>" }
    ```
 
 3. **Add a `CLAUDE.md`** to the package documenting its conventions (if it doesn't have one)
@@ -48,7 +48,7 @@ To bring an existing external project into the monorepo:
 
 5. **Verify** the package is recognized:
    ```bash
-   pnpm --filter @cloudiverse/<name> <cmd>
+   pnpm --filter @tale-ui/<name> <cmd>
    ```
 
 > **Git submodules:** If the external project must keep its own independent git history, use a submodule instead:
@@ -62,7 +62,7 @@ To use one workspace package from another (e.g., an app consuming the CSS packag
 // apps/my-app/package.json
 {
   "dependencies": {
-    "@cloudiverse/design-system": "workspace:*"
+   "@tale-ui/core": "workspace:*"
   }
 }
 ```
@@ -71,7 +71,7 @@ Then run `pnpm install` from root. pnpm will symlink the local package instead o
 
 From the CLI:
 ```bash
-pnpm --filter @cloudiverse/my-app add @cloudiverse/design-system --workspace
+pnpm --filter @tale-ui/my-app add @tale-ui/core --workspace
 ```
 
 ## Using the Design System in External Projects
@@ -79,17 +79,17 @@ pnpm --filter @cloudiverse/my-app add @cloudiverse/design-system --workspace
 ### Method 1: npm install (recommended)
 
 ```bash
-npm install @cloudiverse/design-system
+npm install @tale-ui/core
 ```
 
 **Import (bundler — Next.js, Vite, webpack):**
 ```css
-@import '@cloudiverse/design-system';   /* → dist/style.css */
+@import '@tale-ui/core';   /* → dist/style.css */
 ```
 
 **Import (plain HTML):**
 ```html
-<link rel="stylesheet" href="node_modules/@cloudiverse/design-system/dist/style.css">
+<link rel="stylesheet" href="node_modules/@tale-ui/core/dist/style.css">
 ```
 
 ### Method 2: Local live-sync with `pnpm link --global` (development only)
@@ -106,10 +106,10 @@ pnpm link --global
 
 **In each consumer project:**
 ```bash
-pnpm link --global @cloudiverse/design-system
+pnpm link --global @tale-ui/core
 ```
 
-To remove: `pnpm unlink --global @cloudiverse/design-system`
+To remove: `pnpm unlink --global @tale-ui/core`
 
 ### Method 3: Direct path reference (for HTML-only projects, no npm)
 
@@ -126,20 +126,20 @@ Add this to the consumer project's `CLAUDE.md`. Documentation links use GitHub r
 ````markdown
 ## Design System
 
-This project uses `@cloudiverse/design-system` (v1.1.0).
+This project uses `@tale-ui/core` (v1.1.0).
 
 **Install:**
 ```bash
-npm install @cloudiverse/design-system
+npm install @tale-ui/core
 ```
 
 **Import (bundler — Next.js, Vite, webpack):**
 ```css
-@import '@cloudiverse/design-system';       /* → dist/style.css */
+@import '@tale-ui/core';       /* → dist/style.css */
 ```
 **Import (plain HTML):**
 ```html
-<link rel="stylesheet" href="node_modules/@cloudiverse/design-system/dist/style.css">
+<link rel="stylesheet" href="node_modules/@tale-ui/core/dist/style.css">
 ```
 
 **Framework note:** The design system sets `html { font-size: 62.5% }` (1rem = 10px).
@@ -172,9 +172,9 @@ Full guide: https://raw.githubusercontent.com/Tale-UI/core/main/packages/css/doc
 
 ```bash
 pnpm install                                   # Install all workspace deps
-pnpm --filter @cloudiverse/design-system <cmd>         # Run command in a specific package
+pnpm --filter @tale-ui/core <cmd>         # Run command in a specific package
 pnpm -r <cmd>                                          # Run command in all packages
-pnpm --filter @cloudiverse/my-app add pkg              # Add a dep to a specific package
+pnpm --filter @tale-ui/my-app add pkg              # Add a dep to a specific package
 ```
 
 ## Workspace Structure
@@ -184,7 +184,7 @@ design-system/
 ├── package.json           # Workspace root (private)
 ├── pnpm-workspace.yaml    # Declares packages/*, apps/*, tools/*
 ├── packages/              # Publishable packages
-│   └── css/               # @cloudiverse/design-system — see packages/css/CLAUDE.md
+│   └── css/               # @tale-ui/core — see packages/css/CLAUDE.md
 ├── apps/                  # Applications (internal, not published)
 └── tools/                 # Build tools, scripts, generators
 ```

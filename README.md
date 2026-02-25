@@ -1,4 +1,4 @@
-# @cloudiverse/design-system
+# @tale-ui/core
 
 [![Publish design system](https://github.com/Tale-UI/core/actions/workflows/publish.yml/badge.svg)](https://github.com/Tale-UI/core/actions/workflows/publish.yml)
 
@@ -18,19 +18,19 @@ A modular, token-based CSS design system with fluid responsive scaling, comprehe
 ## Installation
 
 ```bash
-npm install @cloudiverse/design-system
+npm install @tale-ui/core
 ```
 
 ### Bundler (Next.js, Vite, webpack)
 
 ```css
-@import '@cloudiverse/design-system';
+@import '@tale-ui/core';
 ```
 
 ### Plain HTML
 
 ```html
-<link rel="stylesheet" href="node_modules/@cloudiverse/design-system/dist/style.css">
+<link rel="stylesheet" href="node_modules/@tale-ui/core/dist/style.css">
 ```
 
 > **Framework note:** This design system sets `html { font-size: 62.5% }` (1rem = 10px). If using Tailwind, shadcn/ui, or Bootstrap, add `html { font-size: 100%; }` after the import to restore their default rem scale. See the [Framework Integration Guide](packages/css/docs/framework-integration.md) for details.
@@ -49,7 +49,7 @@ npm install @cloudiverse/design-system
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- Design System -->
-  <link rel="stylesheet" href="node_modules/@cloudiverse/design-system/dist/style.css" />
+  <link rel="stylesheet" href="node_modules/@tale-ui/core/dist/style.css" />
 </head>
 <body>
 
@@ -94,7 +94,7 @@ npm install @cloudiverse/design-system
 
 | Package | Path | Description |
 |---------|------|-------------|
-| `@cloudiverse/design-system` | [packages/css](packages/css) | Modular token-based CSS design system |
+| `@tale-ui/core` | [packages/css](packages/css) | Modular token-based CSS design system |
 
 ## Release Workflow (npm + GitHub in sync)
 

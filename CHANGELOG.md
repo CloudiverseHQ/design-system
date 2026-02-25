@@ -2,10 +2,22 @@
 
 All notable changes to this project are documented in this file.
 
+## v1.1.3 - 2026-02-25
+
+### Changed
+- Renamed npm package identity from `@cloudiverse/design-system` to `@tale-ui/core` across package metadata, release tooling, CI workflow filters, and documentation.
+- Updated repository references to `Tale-UI/core` in docs and release automation.
+
+### Published
+- Published `@tale-ui/core@1.1.2` to npm as the new package name.
+
+### Deprecated
+- Deprecated `@cloudiverse/design-system` on npm with message: `Package moved to @tale-ui/core`.
+
 ## v1.1.2 - 2026-02-22
 
 ### Fixed
-- Bumped `@cloudiverse/design-system` package version to `1.1.2` so the pushed tag and package version match for the publish workflow.
+- Bumped `@tale-ui/core` package version to `1.1.2` so the pushed tag and package version match for the publish workflow.
 
 ### Notes
 - This release resolves the failed publish run for tag `v1.1.1`, where `packages/css/package.json` was still `1.1.0`.

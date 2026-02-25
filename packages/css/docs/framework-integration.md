@@ -1,6 +1,6 @@
 # Framework Integration Guide
 
-Guide for using `@cloudiverse/design-system` alongside popular CSS frameworks and build tools.
+Guide for using `@tale-ui/core` alongside popular CSS frameworks and build tools.
 
 ---
 
@@ -16,7 +16,7 @@ Guide for using `@cloudiverse/design-system` alongside popular CSS frameworks an
 ```bash
 pnpm build         # from monorepo root
 # or:
-pnpm --filter @cloudiverse/design-system build
+pnpm --filter @tale-ui/core build
 ```
 
 ---
@@ -45,7 +45,7 @@ html { font-size: 100%; }
 
 ```css
 /* globals.css */
-@import '@cloudiverse/design-system';   /* resolves to dist/style.css */
+@import '@tale-ui/core';   /* resolves to dist/style.css */
 @import 'tailwindcss';
 ```
 
@@ -105,7 +105,7 @@ These are approximate mappings — adjust shade values to match your design inte
 
 **`app/globals.css`:**
 ```css
-@import '@cloudiverse/design-system';
+@import '@tale-ui/core';
 /* optionally: */
 html { font-size: 100%; }  /* if using Tailwind/shadcn alongside */
 ```
@@ -115,12 +115,12 @@ html { font-size: 100%; }  /* if using Tailwind/shadcn alongside */
 import './globals.css'
 ```
 
-> **Turbopack note:** The `file:` dependency path and pnpm symlinks (`pnpm link --global`) may fail with Turbopack on Windows. If `@cloudiverse/design-system` fails to resolve, copy `dist/style.css` directly into your project and import from the local path.
+> **Turbopack note:** The `file:` dependency path and pnpm symlinks (`pnpm link --global`) may fail with Turbopack on Windows. If `@tale-ui/core` fails to resolve, copy `dist/style.css` directly into your project and import from the local path.
 
 **Workaround for Turbopack on Windows:**
 ```bash
 # Copy the built file into your project
-cp node_modules/@cloudiverse/design-system/dist/style.css src/styles/design-system.css
+cp node_modules/@tale-ui/core/dist/style.css src/styles/design-system.css
 ```
 Then import: `@import './design-system.css'` — and re-copy whenever the design system updates.
 
@@ -132,9 +132,9 @@ Works out of the box with either `src/index.css` or `dist/style.css`:
 
 ```js
 // main.js / main.ts
-import '@cloudiverse/design-system'           // → dist/style.css via exports field
+import '@tale-ui/core'           // → dist/style.css via exports field
 // or:
-import '@cloudiverse/design-system/src'       // → src/index.css (Vite resolves @import natively)
+import '@tale-ui/core/src'       // → src/index.css (Vite resolves @import natively)
 ```
 
 ---
@@ -155,7 +155,7 @@ module.exports = {
 
 Import in your CSS entry point:
 ```css
-@import '@cloudiverse/design-system/src';
+@import '@tale-ui/core/src';
 ```
 
 Without `postcss-import`, use `dist/style.css` which has all `@import` statements already resolved.

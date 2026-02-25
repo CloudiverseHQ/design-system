@@ -1,0 +1,108 @@
+# Design Tokens
+
+## Spacing
+
+All spacing uses fluid `clamp()` scaling between `--min-screen-width` (480px) and `--max-screen-width` (1600px):
+
+- **General:** `--space-4xs` through `--space-4xl` (11 steps)
+- **Section:** `--section-space-xs` through `--section-space-xl` (5 steps, larger scale)
+
+## Typography
+
+Six typography categories, each with font-family, size, weight, line-height, and letter-spacing tokens:
+
+| Category | Sizes | Use |
+|----------|-------|-----|
+| `display` | l, m, s | Hero headings, page titles |
+| `heading` | l, m, s | Section headings |
+| `title` | l, m, s | Card titles, sub-sections |
+| `label` | l, m, s, xs | UI labels, navigation |
+| `body` (`text`) | l, m, s, xs | Body text, paragraphs |
+| `mono` | l, m, s, xs | Code, technical content |
+
+Fonts: **Geist** (display + body), **Roboto Mono** (code).
+
+## Color System
+
+**16 named color families** with 11 shades each (5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100):
+red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, indigo, violet, purple, fuchsia, pink, rose
+
+**Semantic colors:** `--error-*`, `--warning-*`, `--success-*`
+
+**Brand colors:** `--brand-5` through `--brand-100` (default teal, overridable via `.color-*` classes)
+
+### Shade guidelines
+
+- 5–30: Light backgrounds, subtle surfaces
+- 40–60: Primary actions, interactive elements — `-60` is the BASE/primary shade and the contrast switch point
+- 70–100: Dark fills, text, strong contrast
+
+### Contrast pairing (applies to all color families including semantic)
+
+- Shades **below 60** are light — pair with `-100` for text/icons
+- Shades **above 60** are dark — pair with `-5` for text/icons
+- `-50` and `-70` are edge shades: fail WCAG 4.5:1 AA for normal text but pass for large text (18px+) — do not use for body text
+
+### `--brand-*` vs `--color-*`
+
+> **Rule: `--brand-*` is palette-only.** It belongs only in `:root` overrides and `.color-{name}` class definitions — **never in component or UI CSS**. `--brand-*` does not invert in dark mode; `--color-*` does.
+
+## Neutral System
+
+6 tone families, each with 25+ shades (5, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 40, 50, 60, 70, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100):
+
+- `neutral-warm` (default)
+- `neutral-cool`, `neutral-slate`, `neutral-gray`, `neutral-onyx`, `neutral-mono`
+
+**Always use `--neutral-*` tokens** (not `--neutral-warm-*` etc.) so components adapt to the active neutral family and dark mode:
+
+```css
+/* Good — adapts to any neutral family */
+background: var(--neutral-14);
+color: var(--neutral-90);
+
+/* Bad — locked to one family */
+background: var(--neutral-warm-14);
+```
+
+### Text contrast rule
+
+Text must never be lighter than `--neutral-50`. Use `--neutral-60` or darker for all text. Use `--neutral-70`–`--neutral-90` for body and heading text.
+
+## Effects
+
+- **Radius:** `--radius-none`, `--radius-xs`, `--radius-s`, `--radius-m`, `--radius-l`, `--radius-xl`, `--radius-2xl`, `--radius-full`
+- **Shadows:** `--shadow-xs`, `--shadow-s`, `--shadow-m`, `--shadow-l`, `--shadow-xl`
+
+## Dark Mode
+
+### Setup
+
+Set `data-color-mode` on `<html>`:
+
+```html
+<html data-color-mode="dark">  <!-- or "light" -->
+```
+
+### Auto-inversion
+
+When dark mode is active, the neutral scale inverts automatically:
+- `--neutral-10` (lightest in light mode) → maps to `--neutral-default-100` (darkest)
+- `--neutral-90` (darkest in light mode) → maps to `--neutral-default-20` (lightest)
+
+`--color-*` tokens also invert. Any component using `--neutral-*` and `--color-*` tokens automatically works in both modes — no separate dark mode CSS needed.
+
+### JavaScript toggle
+
+```javascript
+// Toggle
+const current = document.documentElement.getAttribute('data-color-mode');
+document.documentElement.setAttribute('data-color-mode', current === 'dark' ? 'light' : 'dark');
+
+// Persist
+localStorage.setItem('color-mode', mode);
+
+// Restore on load
+const saved = localStorage.getItem('color-mode');
+if (saved) document.documentElement.setAttribute('data-color-mode', saved);
+```

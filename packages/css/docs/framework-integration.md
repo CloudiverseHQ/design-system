@@ -120,9 +120,9 @@ import './globals.css'
 **Workaround for Turbopack on Windows:**
 ```bash
 # Copy the built file into your project
-cp node_modules/@tale-ui/core/dist/style.css src/styles/design-system.css
+cp node_modules/@tale-ui/core/dist/style.css src/styles/core.css
 ```
-Then import: `@import './design-system.css'` — and re-copy whenever the design system updates.
+Then import: `@import './core.css'` — and re-copy whenever the design system updates.
 
 ---
 

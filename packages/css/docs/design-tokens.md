@@ -20,7 +20,7 @@ Six typography categories, each with font-family, size, weight, line-height, and
 | `body` (`text`) | l, m, s, xs | Body text, paragraphs |
 | `mono` | l, m, s, xs | Code, technical content |
 
-Fonts: **Geist** (display + body), **Roboto Mono** (code).
+Fonts: **Inter** (display + body), **Playfair Display** (expressive), **Roboto Mono** (code).
 
 ## Color System
 

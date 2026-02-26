@@ -174,15 +174,18 @@ body {
     line-height: var(--mono-line-height);
     letter-spacing: var(--mono-letter-spacing);
 }
-.bricks-is-frontend :where(h1, h2, h3, h4, h5, h6) {
+.text--expressive {
+    font-family: var(--expressive-font-family);
+}
+:where(h1, h2, h3, h4, h5, h6) {
     color: var(--display-color);
 }
-.bricks-is-frontend :where(p, span) {
+:where(p, span) {
     color: var(--text-color);
 }
-.bricks-is-frontend :where(pre) {
+:where(pre) {
     color: var(--mono-color);
 }
-body.bricks-is-frontend {
+body{
     color: var(--text-color);
 }

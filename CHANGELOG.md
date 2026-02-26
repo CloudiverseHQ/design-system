@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## v1.1.6 - 2026-02-26
+
+### Changed
+- Updated typography and spacing guidance across the core styles and package documentation.
+- Refreshed package docs pages and generated documentation output to align with current token usage.
+- Updated release automation to create descriptive GitHub release titles and body content from `CHANGELOG.md`.
+
+### Release
+- Bumped `@tale-ui/core` package version to `1.1.6`.
+- Updated consumer setup snippet version references to `v1.1.6`.
+
 ## v1.1.5 - 2026-02-26
 
 ### Changed

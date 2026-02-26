@@ -39,9 +39,9 @@ Components live in the consuming project, not in this design system. Build them 
 .card__description { color: var(--neutral-70); margin: 0; }
 ```
 
-## Bricks Builder Integration
+## Framework Integration Notes
 
-Some classes include Bricks Builder selectors (`.bricks-is-frontend`). These are in `src/foundations/_typography.css` and `src/foundations/_base-elements.css`. They are harmless in non-Bricks environments.
+The core styles are framework-agnostic and apply directly without framework-specific selectors.
 
 ## Usage & Import
 
@@ -62,5 +62,5 @@ Bundle with any CSS tool (PostCSS, Lightning CSS, or simple concatenation) to re
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
 ```

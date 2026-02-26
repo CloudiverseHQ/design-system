@@ -15,7 +15,7 @@
             margin: 0;
             background: var(--neutral-10);
             color: var(--neutral-90);
-            font-family: "Geist", sans-serif;
+            font-family: var(--body-font);
             -webkit-font-smoothing: antialiased;
         }
 
@@ -43,10 +43,10 @@
         }
         .doc-sidebar a {
             display: block;
-            padding: 0.5rem 1.6rem;
+            padding: 0.5rem var(--space-s);
             color: var(--neutral-70);
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: var(--text-s);
             transition: all 0.15s;
         }
         .doc-sidebar a:hover {
@@ -58,12 +58,12 @@
             background: var(--neutral-20);
             font-weight: 600;
             border-left: 2px solid var(--color-60);
-            padding-left: 1.4rem;
+            padding-left: var(--space-s);
         }
         .doc-sidebar .nav-title {
             font-weight: 600;
             color: var(--neutral-90);
-            padding: 1.2rem 1.6rem 0.4rem;
+            padding: var(--space-xs) var(--space-s) var(--space-4xs);
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -113,7 +113,7 @@
         .doc-section > p.section-desc {
             color: var(--neutral-60);
             margin: 0 0 2.5rem;
-            font-size: 1.5rem;
+            font-size: var(--text-m);
         }
 
         /* Demo containers */
@@ -127,8 +127,8 @@
 
         /* Code blocks */
         code {
-            font-family: "Roboto Mono", monospace;
-            font-size: 1.2rem;
+            font-family: var(--mono-font);
+            font-size: var(--text-xs);
             background: var(--neutral-18);
             padding: 0.15em 0.45em;
             border-radius: var(--radius-xs);
@@ -165,7 +165,7 @@
             display: flex;
             border-radius: var(--radius-m);
             overflow: hidden;
-            margin-bottom: 0.6rem;
+            margin-bottom: var(--space-3xs);
         }
         .swatch {
             flex: 1;
@@ -179,8 +179,8 @@
         }
         .swatch-label {
             font-size: 0.95rem;
-            font-family: "Roboto Mono", monospace;
-            color: white;
+            font-family: var(--mono-font);
+            color: var(--neutral-5);
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
             padding: 0.3rem;
             opacity: 0;
@@ -189,9 +189,21 @@
             line-height: 1.2;
         }
         .swatch:hover .swatch-label { opacity: 1; }
+        .swatch-strip .swatch:nth-child(7)::before {
+            content: '';
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.8;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+        }
         .swatch-row-label {
             font-weight: 600;
-            font-size: 1.3rem;
+            font-size: var(--text-s);
             min-width: 8rem;
             display: flex;
             align-items: center;
@@ -202,15 +214,22 @@
         .space-bar {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.6rem;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-3xs);
         }
         .space-bar-label {
-            min-width: 10rem;
-            font-family: "Roboto Mono", monospace;
-            font-size: 1.2rem;
+            width: 15rem;
+            flex-shrink: 0;
+            font-family: var(--mono-font);
+            font-size: var(--text-xs);
             text-align: right;
             color: var(--neutral-70);
+        }
+        .space-bar-range {
+            font-family: var(--mono-font);
+            font-size: var(--text-xs);
+            color: var(--neutral-50);
+            white-space: nowrap;
         }
         .space-bar-fill {
             height: 2.4rem;
@@ -224,10 +243,10 @@
             background: var(--color-10);
             border: 1px solid var(--color-30);
             border-radius: var(--radius-s);
-            padding: 1rem;
+            padding: var(--space-xs);
             text-align: center;
-            font-size: 1.2rem;
-            font-family: "Roboto Mono", monospace;
+            font-size: var(--text-xs);
+            font-family: var(--mono-font);
             color: var(--color-70);
             min-height: 4rem;
             display: flex;
@@ -245,7 +264,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.1rem;
-            font-family: "Roboto Mono", monospace;
+            font-family: var(--mono-font);
             color: var(--color-80);
         }
 
@@ -258,8 +277,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: "Roboto Mono", monospace;
-            font-size: 1.2rem;
+            font-family: var(--mono-font);
+            font-size: var(--text-xs);
             color: var(--neutral-60);
         }
 
@@ -280,39 +299,39 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            font-family: "Roboto Mono", monospace;
+            font-size: var(--text-xs);
+            font-family: var(--mono-font);
             color: var(--color-70);
         }
 
         /* Toggle button */
         .mode-toggle {
-            background: #333;
-            color: #eee;
+            background: var(--neutral-80);
+            color: var(--neutral-10);
             border: none;
-            padding: 0.6rem 1.4rem;
+            padding: var(--space-3xs) var(--space-s);
             border-radius: var(--radius-m);
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: var(--text-s);
             font-family: inherit;
             transition: background 0.2s;
         }
-        .mode-toggle:hover { background: #444; }
+        .mode-toggle:hover { background: var(--neutral-70); }
 
         /* Header controls */
         .doc-header-controls {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: var(--space-xs);
         }
         .theme-picker {
-            background: #333;
-            color: #eee;
+            background: var(--neutral-80);
+            color: var(--neutral-10);
             border: none;
-            padding: 0.6rem 1.4rem;
+            padding: var(--space-3xs) var(--space-s);
             border-radius: var(--radius-m);
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: var(--text-s);
             font-family: inherit;
             appearance: none;
             -webkit-appearance: none;
@@ -321,14 +340,14 @@
             background-position: right 1rem center;
             padding-right: 3rem;
         }
-        .theme-picker:hover { background: #444; }
-        .theme-picker option { background: #333; color: #eee; }
+        .theme-picker:hover { background: var(--neutral-70); }
+        .theme-picker option { background: var(--neutral-80); color: var(--neutral-10); }
 
         /* Utility table */
         .util-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 1.3rem;
+            font-size: var(--text-s);
             margin-bottom: 2rem;
         }
         .util-table th,
@@ -351,12 +370,25 @@
             display: flex;
             border-radius: var(--radius-s);
             overflow: hidden;
-            margin-bottom: 0.4rem;
+            margin-bottom: var(--space-4xs);
         }
         .neutral-swatch {
             flex: 1;
             height: 3.6rem;
             min-width: 0;
+            position: relative;
+        }
+        .neutral-strip .neutral-swatch:nth-child(10)::before {
+            content: '';
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.8;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.25);
         }
 
         /* Width bar demo */
@@ -364,9 +396,9 @@
             background: var(--color-20);
             border: 1px solid var(--color-40);
             border-radius: var(--radius-xs);
-            padding: 0.5rem 1rem;
-            margin-bottom: 0.5rem;
-            font-family: "Roboto Mono", monospace;
+            padding: var(--space-4xs) var(--space-xs);
+            margin-bottom: var(--space-4xs);
+            font-family: var(--mono-font);
             font-size: 1.1rem;
             color: var(--color-70);
         }
@@ -380,8 +412,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-family: "Roboto Mono", monospace;
+            color: var(--neutral-5);
+            font-family: var(--mono-font);
             font-size: 1.1rem;
         }
 
@@ -390,7 +422,7 @@
             background: var(--neutral-5);
             border: 1px solid var(--neutral-20);
             border-radius: var(--radius-s);
-            padding: 1.2rem;
+            padding: var(--space-xs);
             max-width: 28rem;
         }
 
@@ -402,7 +434,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: "Roboto Mono", monospace;
+            font-family: var(--mono-font);
             font-size: 1.1rem;
             color: var(--color-70);
             width: 14rem;
@@ -413,24 +445,24 @@
             background: var(--color-10);
             border: 1px solid var(--color-30);
             border-radius: var(--radius-m);
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-xs);
         }
         .padding-demo-inner {
             background: var(--neutral-5);
             border-radius: var(--radius-s);
             text-align: center;
-            font-family: "Roboto Mono", monospace;
-            font-size: 1.2rem;
+            font-family: var(--mono-font);
+            font-size: var(--text-xs);
             color: var(--neutral-60);
-            padding: 0.8rem;
+            padding: var(--space-2xs);
         }
 
         /* Color override demo */
         .color-override-chip {
-            padding: 0.8rem 1.2rem;
+            padding: var(--space-2xs) var(--space-xs);
             border-radius: var(--radius-s);
             text-align: center;
-            font-family: "Roboto Mono", monospace;
+            font-family: var(--mono-font);
             font-size: 1.1rem;
         }
 
@@ -442,11 +474,11 @@
         }
     </style>
 </head>
-<body class="bricks-is-frontend">
+<body>
 
     <!-- Top Header -->
     <div class="doc-header">
-        <h1 style="color: var(--neutral-90); font-family: 'Geist', sans-serif;">CSS Framework Docs</h1>
+        <h1 style="color: var(--neutral-90); font-family: var(--body-font);">CSS Framework Docs</h1>
         <div class="doc-header-controls">
             <select class="theme-picker" onchange="setNeutral(this.value)">
                 <option value="warm">Warm (default)</option>
@@ -508,7 +540,7 @@
                  ============================ -->
             <section class="doc-section" id="spacing">
                 <h2>Spacing Tokens</h2>
-                <p class="section-desc">Fluid spacing scale using <code>clamp()</code> that adapts between 480px and 1600px viewports.</p>
+                <p class="section-desc">Static spacing scale by default — add <code>.responsive</code> to any element or ancestor to enable fluid scaling between 480px and 1600px viewports.</p>
 
                 <h3>Base Spacing Scale</h3>
                 <div class="demo-box">
@@ -534,6 +566,29 @@
                     <div class="space-bar"><span class="space-bar-label">--section-space-l</span><div class="space-bar-fill" style="width: var(--section-space-l); background: var(--color-40)"></div></div>
                     <div class="space-bar"><span class="space-bar-label">--section-space-xl</span><div class="space-bar-fill" style="width: var(--section-space-xl); background: var(--color-40)"></div></div>
                 </div>
+
+                <h3>Responsive scaling</h3>
+                <p style="color:var(--neutral-60);font-size:var(--text-s);margin-bottom:var(--space-xs)">Resize the window to see these bars scale fluidly between their min and max values. The <code>.responsive</code> class is applied to the containers below.</p>
+                <div class="demo-box responsive">
+                    <div class="space-bar"><span class="space-bar-label">--space-4xs</span><div class="space-bar-fill" style="width: var(--space-4xs)"></div><span class="space-bar-range">0.52 → 0.49rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-3xs</span><div class="space-bar-fill" style="width: var(--space-3xs)"></div><span class="space-bar-range">0.66 → 0.70rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-2xs</span><div class="space-bar-fill" style="width: var(--space-2xs)"></div><span class="space-bar-range">0.82 → 0.99rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-xs</span><div class="space-bar-fill" style="width: var(--space-xs)"></div><span class="space-bar-range">1.02 → 1.40rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-s</span><div class="space-bar-fill" style="width: var(--space-s)"></div><span class="space-bar-range">1.28 → 1.98rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-m</span><div class="space-bar-fill" style="width: var(--space-m)"></div><span class="space-bar-range">1.60 → 2.80rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-l</span><div class="space-bar-fill" style="width: var(--space-l)"></div><span class="space-bar-range">2.00 → 3.96rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-xl</span><div class="space-bar-fill" style="width: var(--space-xl)"></div><span class="space-bar-range">2.50 → 5.60rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-2xl</span><div class="space-bar-fill" style="width: var(--space-2xl)"></div><span class="space-bar-range">3.13 → 7.92rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-3xl</span><div class="space-bar-fill" style="width: var(--space-3xl)"></div><span class="space-bar-range">3.91 → 11.19rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--space-4xl</span><div class="space-bar-fill" style="width: var(--space-4xl)"></div><span class="space-bar-range">4.88 → 15.83rem</span></div>
+                </div>
+                <div class="demo-box responsive" style="margin-top:var(--space-xs)">
+                    <div class="space-bar"><span class="space-bar-label">--section-space-xs</span><div class="space-bar-fill" style="width: var(--section-space-xs); background: var(--color-40)"></div><span class="space-bar-range">2.00 → 3.96rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--section-space-s</span><div class="space-bar-fill" style="width: var(--section-space-s); background: var(--color-40)"></div><span class="space-bar-range">3.13 → 7.92rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--section-space-m</span><div class="space-bar-fill" style="width: var(--section-space-m); background: var(--color-40)"></div><span class="space-bar-range">3.91 → 11.19rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--section-space-l</span><div class="space-bar-fill" style="width: var(--section-space-l); background: var(--color-40)"></div><span class="space-bar-range">4.88 → 15.83rem</span></div>
+                    <div class="space-bar"><span class="space-bar-label">--section-space-xl</span><div class="space-bar-fill" style="width: var(--section-space-xl); background: var(--color-40)"></div><span class="space-bar-range">6.10 → 22.37rem</span></div>
+                </div>
             </section>
 
             <!-- ============================
@@ -541,21 +596,39 @@
                  ============================ -->
             <section class="doc-section" id="typography-scale">
                 <h2>Typography Scale</h2>
-                <p class="section-desc">12 fluid type sizes from <code>--text-xs</code> to <code>--text-8xl</code>.</p>
+                <p class="section-desc">12 type sizes from <code>--text-xs</code> to <code>--text-8xl</code>. Static by default — add <code>.responsive</code> to any element or ancestor to enable fluid scaling.</p>
 
                 <div class="demo-box">
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-xs)">--text-xs</span> <code>clamp(1.23rem, ..., 1.11rem)</code></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-s)">--text-s</span> <code>clamp(1.31rem, ..., 1.33rem)</code></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-m)">--text-m</span> <code>clamp(1.4rem, ..., 1.6rem)</code></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-l)">--text-l</span> <code>clamp(1.49rem, ..., 1.92rem)</code></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-xl)">--text-xl</span> <code>clamp(1.59rem, ..., 2.3rem)</code></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-2xl)">--text-2xl</span> <code>clamp(1.7rem, ..., 2.76rem)</code></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-3xl)">--text-3xl</span> <code>clamp(1.81rem, ..., 3.32rem)</code></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-4xl)">--text-4xl</span> <code>clamp(1.94rem, ..., 3.98rem)</code></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-5xl)">--text-5xl</span></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-6xl)">--text-6xl</span></div>
-                    <div style="margin-bottom:1.2rem"><span style="font-size:var(--text-7xl)">--text-7xl</span></div>
-                    <div style="margin-bottom:0"><span style="font-size:var(--text-8xl)">--text-8xl</span></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-xs)">--text-xs</span> <code>1.23rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-s)">--text-s</span> <code>1.33rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-m)">--text-m</span> <code>1.60rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-l)">--text-l</span> <code>1.92rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-xl)">--text-xl</span> <code>2.19rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-2xl)">--text-2xl</span> <code>2.46rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-3xl)">--text-3xl</span> <code>2.73rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-4xl)">--text-4xl</span> <code>3.0rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-5xl)">--text-5xl</span> <code>3.4rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-6xl)">--text-6xl</span> <code>3.8rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-7xl)">--text-7xl</span> <code>4.1rem</code></div>
+                    <div style="margin-bottom:0"><span style="font-size:var(--text-8xl)">--text-8xl</span> <code>4.5rem</code></div>
+                </div>
+                <p style="color:var(--neutral-60);font-size:var(--text-s);margin-top:var(--space-xs)">Add <code>.responsive</code> to enable fluid scaling: <code>&lt;body class="responsive"&gt;</code></p>
+
+                <h3>Responsive scaling</h3>
+                <p style="color:var(--neutral-60);font-size:var(--text-s);margin-bottom:var(--space-xs)">Resize the window to see these sizes scale fluidly between their min and max values. The <code>.responsive</code> class is applied to the container below.</p>
+                <div class="demo-box responsive">
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-xs)">--text-xs</span> <code>1.23 → 1.11rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-s)">--text-s</span> <code>1.31 → 1.33rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-m)">--text-m</span> <code>1.40 → 1.60rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-l)">--text-l</span> <code>1.49 → 1.92rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-xl)">--text-xl</span> <code>1.59 → 2.19rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-2xl)">--text-2xl</span> <code>1.70 → 2.46rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-3xl)">--text-3xl</span> <code>1.81 → 2.73rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-4xl)">--text-4xl</span> <code>2.43 → 3.0rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-5xl)">--text-5xl</span> <code>2.59 → 3.4rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-6xl)">--text-6xl</span> <code>2.75 → 3.8rem</code></div>
+                    <div style="margin-bottom:var(--space-xs)"><span style="font-size:var(--text-7xl)">--text-7xl</span> <code>2.94 → 4.1rem</code></div>
+                    <div style="margin-bottom:0"><span style="font-size:var(--text-8xl)">--text-8xl</span> <code>3.14 → 4.5rem</code></div>
                 </div>
             </section>
 
@@ -565,34 +638,34 @@
             <section class="doc-section" id="radius">
                 <h2>Border Radius</h2>
                 <p class="section-desc">Radius tokens from sharp corners to fully rounded.</p>
-                <div class="demo-box" style="display:flex; flex-wrap:wrap; gap:1.6rem; align-items:center">
+                <div class="demo-box" style="display:flex; flex-wrap:wrap; gap:var(--space-s); align-items:center">
                     <div>
                         <div class="radius-demo radius--xs">xs</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.radius--xs</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.radius--xs</code></div>
                     </div>
                     <div>
                         <div class="radius-demo radius--s">s</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.radius--s</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.radius--s</code></div>
                     </div>
                     <div>
                         <div class="radius-demo radius--m">m</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.radius--m</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.radius--m</code></div>
                     </div>
                     <div>
                         <div class="radius-demo radius--l">l</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.radius--l</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.radius--l</code></div>
                     </div>
                     <div>
                         <div class="radius-demo radius--xl">xl</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.radius--xl</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.radius--xl</code></div>
                     </div>
                     <div>
                         <div class="radius-demo radius--2xl">2xl</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.radius--2xl</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.radius--2xl</code></div>
                     </div>
                     <div>
                         <div class="radius-demo radius--full" style="width:8rem;height:8rem">full</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.radius--full</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.radius--full</code></div>
                     </div>
                 </div>
             </section>
@@ -603,7 +676,7 @@
             <section class="doc-section" id="shadows">
                 <h2>Shadows</h2>
                 <p class="section-desc">Five elevation levels with multi-layer box shadows.</p>
-                <div class="demo-box" style="display:flex; flex-wrap:wrap; gap:2.4rem; background:var(--neutral-14)">
+                <div class="demo-box" style="display:flex; flex-wrap:wrap; gap:var(--space-m); background:var(--neutral-14)">
                     <div class="shadow-demo shadow--xs">shadow--xs</div>
                     <div class="shadow-demo shadow--s">shadow--s</div>
                     <div class="shadow-demo shadow--m">shadow--m</div>
@@ -621,7 +694,7 @@
 
                 <h3>Brand Colors</h3>
                 <div class="demo-box">
-                    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem">
+                    <div style="display:flex;align-items:center;gap:var(--space-xs);margin-bottom:var(--space-2xs)">
                         <span class="swatch-row-label">Brand</span>
                         <div class="swatch-strip" style="flex:1">
                             <div class="swatch" style="background:var(--brand-5)"><span class="swatch-label">5</span></div>
@@ -644,20 +717,11 @@
 
                 <h3>Contrast Pairing</h3>
                 <div class="demo-box">
-                    <p style="margin:0 0 0.8rem">This rule applies to all named families <strong>and</strong> semantic colours (<code>error</code>, <code>warning</code>, <code>success</code>). The <strong><code>-60</code> shade is the BASE</strong> — the primary shade and the contrast switch point for each family.</p>
-                    <p style="margin:0 0 0.8rem">Shades <strong>below 60</strong> are light backgrounds — use the <code>-100</code> shade for text/icons on them. Shades <strong>above 60</strong> are dark — use the <code>-5</code> shade for text/icons.</p>
-                    <p style="margin:0 0 0.8rem">The <code>-60</code> shade is the switch point: depending on hue it meets 4.5:1 AA with either the <code>-5</code> or <code>-100</code> end of the palette.</p>
+                    <p style="margin:0 0 var(--space-2xs)">This rule applies to all named families <strong>and</strong> semantic colours (<code>error</code>, <code>warning</code>, <code>success</code>). The <strong><code>-60</code> shade is the BASE</strong> — the primary shade and the contrast switch point for each family.</p>
+                    <p style="margin:0 0 var(--space-2xs)">Shades <strong>below 60</strong> are light backgrounds — use the <code>-100</code> shade for text/icons on them. Shades <strong>above 60</strong> are dark — use the <code>-5</code> shade for text/icons.</p>
+                    <p style="margin:0 0 var(--space-2xs)">The <code>-60</code> shade is the switch point: depending on hue it meets 4.5:1 AA with either the <code>-5</code> or <code>-100</code> end of the palette.</p>
                     <p style="margin:0;color:var(--neutral-60);font-size:var(--text-s)"><strong>Edge shades:</strong> <code>-50</code> and <code>-70</code> typically fail WCAG 4.5:1 AA for normal text but pass for large text (18px+) and decorative use (3:1).</p>
                 </div>
-            </section>
-
-            <!-- ============================
-                 SEMANTIC COLORS
-                 ============================ -->
-            <section class="doc-section" id="semantic-colors">
-                <h2>Semantic Colors</h2>
-                <p class="section-desc">Purpose-driven color tokens for feedback states.</p>
-                <div class="demo-box" id="semantic-colors-container"></div>
             </section>
 
             <!-- ============================
@@ -670,76 +734,98 @@
             </section>
 
             <!-- ============================
+                 SEMANTIC COLORS
+                 ============================ -->
+            <section class="doc-section" id="semantic-colors">
+                <h2>Semantic Colors</h2>
+                <p class="section-desc">Purpose-driven color tokens for feedback states.</p>
+                <div class="demo-box" id="semantic-colors-container"></div>
+            </section>
+
+            <!-- ============================
                  TYPOGRAPHY CLASSES
                  ============================ -->
             <section class="doc-section" id="type-classes">
                 <h2>Typography Classes</h2>
-                <p class="section-desc">Six type categories, each with multiple size variants.</p>
+                <p class="section-desc">Six type categories, each with multiple size variants, plus an expressive modifier.</p>
 
                 <h3>Display</h3>
                 <div class="demo-box">
-                    <div class="text--display-l" style="margin-bottom:0.4rem">Display Large</div>
-                    <div style="margin-bottom:1rem"><code>.text--display-l</code></div>
-                    <div class="text--display-m" style="margin-bottom:0.4rem">Display Medium</div>
-                    <div style="margin-bottom:1rem"><code>.text--display-m</code></div>
-                    <div class="text--display-s" style="margin-bottom:0.4rem">Display Small</div>
+                    <div class="text--display-l" style="margin-bottom:var(--space-4xs)">Display Large</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--display-l</code></div>
+                    <div class="text--display-m" style="margin-bottom:var(--space-4xs)">Display Medium</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--display-m</code></div>
+                    <div class="text--display-s" style="margin-bottom:var(--space-4xs)">Display Small</div>
                     <div><code>.text--display-s</code></div>
                 </div>
 
                 <h3>Heading</h3>
                 <div class="demo-box">
-                    <div class="text--heading-l" style="margin-bottom:0.4rem">Heading Large</div>
-                    <div style="margin-bottom:1rem"><code>.text--heading-l</code></div>
-                    <div class="text--heading-m" style="margin-bottom:0.4rem">Heading Medium</div>
-                    <div style="margin-bottom:1rem"><code>.text--heading-m</code></div>
-                    <div class="text--heading-s" style="margin-bottom:0.4rem">Heading Small</div>
+                    <div class="text--heading-l" style="margin-bottom:var(--space-4xs)">Heading Large</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--heading-l</code></div>
+                    <div class="text--heading-m" style="margin-bottom:var(--space-4xs)">Heading Medium</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--heading-m</code></div>
+                    <div class="text--heading-s" style="margin-bottom:var(--space-4xs)">Heading Small</div>
                     <div><code>.text--heading-s</code></div>
                 </div>
 
                 <h3>Title</h3>
                 <div class="demo-box">
-                    <div class="text--title-l" style="margin-bottom:0.4rem">Title Large</div>
-                    <div style="margin-bottom:1rem"><code>.text--title-l</code></div>
-                    <div class="text--title-m" style="margin-bottom:0.4rem">Title Medium</div>
-                    <div style="margin-bottom:1rem"><code>.text--title-m</code></div>
-                    <div class="text--title-s" style="margin-bottom:0.4rem">Title Small</div>
+                    <div class="text--title-l" style="margin-bottom:var(--space-4xs)">Title Large</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--title-l</code></div>
+                    <div class="text--title-m" style="margin-bottom:var(--space-4xs)">Title Medium</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--title-m</code></div>
+                    <div class="text--title-s" style="margin-bottom:var(--space-4xs)">Title Small</div>
                     <div><code>.text--title-s</code></div>
                 </div>
 
                 <h3>Label</h3>
                 <div class="demo-box">
-                    <div class="text--label-l" style="margin-bottom:0.4rem">Label Large</div>
-                    <div style="margin-bottom:1rem"><code>.text--label-l</code></div>
-                    <div class="text--label-m" style="margin-bottom:0.4rem">Label Medium</div>
-                    <div style="margin-bottom:1rem"><code>.text--label-m</code></div>
-                    <div class="text--label-s" style="margin-bottom:0.4rem">Label Small</div>
-                    <div style="margin-bottom:1rem"><code>.text--label-s</code></div>
-                    <div class="text--label-xs" style="margin-bottom:0.4rem">Label Extra Small</div>
+                    <div class="text--label-l" style="margin-bottom:var(--space-4xs)">Label Large</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--label-l</code></div>
+                    <div class="text--label-m" style="margin-bottom:var(--space-4xs)">Label Medium</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--label-m</code></div>
+                    <div class="text--label-s" style="margin-bottom:var(--space-4xs)">Label Small</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--label-s</code></div>
+                    <div class="text--label-xs" style="margin-bottom:var(--space-4xs)">Label Extra Small</div>
                     <div><code>.text--label-xs</code></div>
                 </div>
 
                 <h3>Body</h3>
                 <div class="demo-box">
-                    <div class="text--body-l" style="margin-bottom:0.4rem">Body Large — The quick brown fox jumps over the lazy dog.</div>
-                    <div style="margin-bottom:1rem"><code>.text--body-l</code></div>
-                    <div class="text--body-m" style="margin-bottom:0.4rem">Body Medium — The quick brown fox jumps over the lazy dog.</div>
-                    <div style="margin-bottom:1rem"><code>.text--body-m</code></div>
-                    <div class="text--body-s" style="margin-bottom:0.4rem">Body Small — The quick brown fox jumps over the lazy dog.</div>
-                    <div style="margin-bottom:1rem"><code>.text--body-s</code></div>
-                    <div class="text--body-xs" style="margin-bottom:0.4rem">Body Extra Small — The quick brown fox jumps over the lazy dog.</div>
+                    <div class="text--body-l" style="margin-bottom:var(--space-4xs)">Body Large — The quick brown fox jumps over the lazy dog.</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--body-l</code></div>
+                    <div class="text--body-m" style="margin-bottom:var(--space-4xs)">Body Medium — The quick brown fox jumps over the lazy dog.</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--body-m</code></div>
+                    <div class="text--body-s" style="margin-bottom:var(--space-4xs)">Body Small — The quick brown fox jumps over the lazy dog.</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--body-s</code></div>
+                    <div class="text--body-xs" style="margin-bottom:var(--space-4xs)">Body Extra Small — The quick brown fox jumps over the lazy dog.</div>
                     <div><code>.text--body-xs</code></div>
                 </div>
 
                 <h3>Mono</h3>
                 <div class="demo-box">
-                    <div class="text--mono-l" style="margin-bottom:0.4rem">Mono Large — console.log("hello")</div>
-                    <div style="margin-bottom:1rem"><code>.text--mono-l</code></div>
-                    <div class="text--mono-m" style="margin-bottom:0.4rem">Mono Medium — console.log("hello")</div>
-                    <div style="margin-bottom:1rem"><code>.text--mono-m</code></div>
-                    <div class="text--mono-s" style="margin-bottom:0.4rem">Mono Small — console.log("hello")</div>
-                    <div style="margin-bottom:1rem"><code>.text--mono-s</code></div>
-                    <div class="text--mono-xs" style="margin-bottom:0.4rem">Mono Extra Small — console.log("hello")</div>
+                    <div class="text--mono-l" style="margin-bottom:var(--space-4xs)">Mono Large — console.log("hello")</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--mono-l</code></div>
+                    <div class="text--mono-m" style="margin-bottom:var(--space-4xs)">Mono Medium — console.log("hello")</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--mono-m</code></div>
+                    <div class="text--mono-s" style="margin-bottom:var(--space-4xs)">Mono Small — console.log("hello")</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--mono-s</code></div>
+                    <div class="text--mono-xs" style="margin-bottom:var(--space-4xs)">Mono Extra Small — console.log("hello")</div>
                     <div><code>.text--mono-xs</code></div>
+                </div>
+
+                <h3>Expressive</h3>
+                <p style="color:var(--neutral-60);font-size:var(--text-s);margin-bottom:var(--space-xs)">A modifier class that applies the expressive serif font. Combine with any display, heading, or title class.</p>
+                <div class="demo-box">
+                    <div class="text--display-l text--expressive" style="margin-bottom:var(--space-4xs)">Display Large</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--display-l .text--expressive</code></div>
+                    <div class="text--display-m text--expressive" style="margin-bottom:var(--space-4xs)">Display Medium</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--display-m .text--expressive</code></div>
+                    <div class="text--heading-l text--expressive" style="margin-bottom:var(--space-4xs)">Heading Large</div>
+                    <div style="margin-bottom:var(--space-xs)"><code>.text--heading-l .text--expressive</code></div>
+                    <div class="text--heading-m text--expressive" style="margin-bottom:var(--space-4xs)">Heading Medium</div>
+                    <div><code>.text--heading-m .text--expressive</code></div>
                 </div>
             </section>
 
@@ -753,15 +839,15 @@
 
                 <h3>Text Alignment</h3>
                 <div class="demo-box">
-                    <div class="text--left" style="padding:0.6rem;background:var(--neutral-14);margin-bottom:0.4rem;border-radius:var(--radius-xs)"><code>.text--left</code> — Left aligned text</div>
-                    <div class="text--center" style="padding:0.6rem;background:var(--neutral-14);margin-bottom:0.4rem;border-radius:var(--radius-xs)"><code>.text--center</code> — Center aligned text</div>
-                    <div class="text--right" style="padding:0.6rem;background:var(--neutral-14);margin-bottom:0.4rem;border-radius:var(--radius-xs)"><code>.text--right</code> — Right aligned text</div>
-                    <div class="text--justify" style="padding:0.6rem;background:var(--neutral-14);border-radius:var(--radius-xs)"><code>.text--justify</code> — Justified text spreads across the full width of the container for a clean edge on both sides.</div>
+                    <div class="text--left" style="padding:var(--space-3xs);background:var(--neutral-14);margin-bottom:var(--space-4xs);border-radius:var(--radius-xs)"><code>.text--left</code> — Left aligned text</div>
+                    <div class="text--center" style="padding:var(--space-3xs);background:var(--neutral-14);margin-bottom:var(--space-4xs);border-radius:var(--radius-xs)"><code>.text--center</code> — Center aligned text</div>
+                    <div class="text--right" style="padding:var(--space-3xs);background:var(--neutral-14);margin-bottom:var(--space-4xs);border-radius:var(--radius-xs)"><code>.text--right</code> — Right aligned text</div>
+                    <div class="text--justify" style="padding:var(--space-3xs);background:var(--neutral-14);border-radius:var(--radius-xs)"><code>.text--justify</code> — Justified text spreads across the full width of the container for a clean edge on both sides.</div>
                 </div>
-                <p style="color:var(--neutral-60);font-size:1.3rem">Responsive variants: <code>.text--center-xl</code>, <code>.text--left-l</code>, <code>.text--right-m</code>, <code>.text--center-s</code></p>
+                <p style="color:var(--neutral-60);font-size:var(--text-s)">Responsive variants: <code>.text--center-xl</code>, <code>.text--left-l</code>, <code>.text--right-m</code>, <code>.text--center-s</code></p>
 
                 <h3>Text Transform</h3>
-                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:1.6rem">
+                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:var(--space-s)">
                     <div><span class="text--uppercase">Uppercase text</span><br><code>.text--uppercase</code></div>
                     <div><span class="text--lowercase">LOWERCASE TEXT</span><br><code>.text--lowercase</code></div>
                     <div><span class="text--capitalize">capitalize each word</span><br><code>.text--capitalize</code></div>
@@ -769,7 +855,7 @@
 
                 <h3>Font Weight</h3>
                 <div class="demo-box">
-                    <div style="display:flex;flex-wrap:wrap;gap:1.6rem 2.4rem">
+                    <div style="display:flex;flex-wrap:wrap;gap:var(--space-s) var(--space-m)">
                         <div><span class="text--100" style="font-size:var(--text-l)">Thin 100</span><br><code>.text--100</code></div>
                         <div><span class="text--200" style="font-size:var(--text-l)">Extra Light 200</span><br><code>.text--200</code></div>
                         <div><span class="text--300" style="font-size:var(--text-l)">Light 300</span><br><code>.text--300</code></div>
@@ -783,13 +869,13 @@
                 </div>
 
                 <h3>Font Style</h3>
-                <div class="demo-box" style="display:flex;gap:2.4rem;flex-wrap:wrap">
+                <div class="demo-box" style="display:flex;gap:var(--space-m);flex-wrap:wrap">
                     <div><span class="text--italic" style="font-size:var(--text-l)">Italic text</span><br><code>.text--italic</code></div>
                     <div><span class="text--oblique" style="font-size:var(--text-l)">Oblique text</span><br><code>.text--oblique</code></div>
                 </div>
 
                 <h3>Text Decoration</h3>
-                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:1.6rem 2.4rem">
+                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:var(--space-s) var(--space-m)">
                     <div><span class="text--underline" style="font-size:var(--text-l)">Underline</span><br><code>.text--underline</code></div>
                     <div><span class="text--line-through" style="font-size:var(--text-l)">Line Through</span><br><code>.text--line-through</code></div>
                     <div><span class="text--overline" style="font-size:var(--text-l)">Overline</span><br><code>.text--overline</code></div>
@@ -800,7 +886,7 @@
                 </div>
 
                 <h3>Text Wrapping</h3>
-                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:2.4rem">
+                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:var(--space-m)">
                     <div><code>.text--pretty</code> — text-wrap: pretty</div>
                     <div><code>.text--balance</code> — text-wrap: balance</div>
                     <div><code>.text--nowrap</code> — white-space: nowrap</div>
@@ -815,46 +901,46 @@
                 <p class="section-desc">Gap classes for flex and grid containers. Also available: <code>.col-gap--*</code> and <code>.row-gap--*</code>.</p>
 
                 <div class="demo-box">
-                    <div style="display:flex;flex-direction:column;gap:1.4rem">
+                    <div style="display:flex;flex-direction:column;gap:var(--space-s)">
                         <div>
-                            <div style="margin-bottom:0.3rem"><code>.gap--4xs</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.gap--4xs</code></div>
                             <div style="display:flex;" class="gap--4xs"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.3rem"><code>.gap--3xs</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.gap--3xs</code></div>
                             <div style="display:flex;" class="gap--3xs"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.3rem"><code>.gap--2xs</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.gap--2xs</code></div>
                             <div style="display:flex;" class="gap--2xs"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.3rem"><code>.gap--xs</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.gap--xs</code></div>
                             <div style="display:flex;" class="gap--xs"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.3rem"><code>.gap--s</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.gap--s</code></div>
                             <div style="display:flex;" class="gap--s"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.3rem"><code>.gap--m</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.gap--m</code></div>
                             <div style="display:flex;" class="gap--m"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.3rem"><code>.gap--l</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.gap--l</code></div>
                             <div style="display:flex;" class="gap--l"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.3rem"><code>.gap--xl</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.gap--xl</code></div>
                             <div style="display:flex;" class="gap--xl"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.3rem"><code>.gap--2xl</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.gap--2xl</code></div>
                             <div style="display:flex;" class="gap--2xl"><div class="grid-cell" style="flex:1">A</div><div class="grid-cell" style="flex:1">B</div><div class="grid-cell" style="flex:1">C</div><div class="grid-cell" style="flex:1">D</div></div>
                         </div>
                     </div>
                 </div>
-                <p style="color:var(--neutral-60);font-size:1.3rem">Also: <code>.col-gap--*</code> (column only) and <code>.row-gap--*</code> (row only) in sizes xs–2xl. <code>.gap--none</code> removes gap at ≤480px. Responsive: <code>.gap--xl-s</code>, <code>.gap--l-m</code>, <code>.gap--m-xl</code>, <code>.gap--s-2xl</code></p>
+                <p style="color:var(--neutral-60);font-size:var(--text-s)">Also: <code>.col-gap--*</code> (column only) and <code>.row-gap--*</code> (row only) in sizes xs–2xl. <code>.gap--none</code> removes gap at ≤480px. Responsive: <code>.gap--xl-s</code>, <code>.gap--l-m</code>, <code>.gap--m-xl</code>, <code>.gap--s-2xl</code></p>
             </section>
 
             <!-- ============================
@@ -866,82 +952,82 @@
 
                 <h3>Fixed Column Grids</h3>
                 <div class="demo-box">
-                    <div style="margin-bottom:0.4rem"><code>.grid--1</code></div>
-                    <div class="grid--1 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--1</code></div>
+                    <div class="grid--1 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">1</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--2</code></div>
-                    <div class="grid--2 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1</div><div class="grid-cell">2</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--2</code></div>
+                    <div class="grid--2 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">1</div><div class="grid-cell">2</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--3</code></div>
-                    <div class="grid--3 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--3</code></div>
+                    <div class="grid--3 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--4</code></div>
-                    <div class="grid--4 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--4</code></div>
+                    <div class="grid--4 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--6</code></div>
-                    <div class="grid--6 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--6</code></div>
+                    <div class="grid--6 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--12</code></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--12</code></div>
                     <div class="grid--12 gap--xs"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div><div class="grid-cell">7</div><div class="grid-cell">8</div><div class="grid-cell">9</div><div class="grid-cell">10</div><div class="grid-cell">11</div><div class="grid-cell">12</div></div>
                 </div>
 
                 <h3>Ratio Grids</h3>
                 <div class="demo-box">
-                    <div style="margin-bottom:0.4rem"><code>.grid--1-2</code> (1:2 ratio)</div>
-                    <div class="grid--1-2 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1fr</div><div class="grid-cell">2fr</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--1-2</code> (1:2 ratio)</div>
+                    <div class="grid--1-2 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">1fr</div><div class="grid-cell">2fr</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--2-1</code> (2:1 ratio)</div>
-                    <div class="grid--2-1 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">2fr</div><div class="grid-cell">1fr</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--2-1</code> (2:1 ratio)</div>
+                    <div class="grid--2-1 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">2fr</div><div class="grid-cell">1fr</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--1-3</code> (1:3 ratio)</div>
-                    <div class="grid--1-3 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1fr</div><div class="grid-cell">3fr</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--1-3</code> (1:3 ratio)</div>
+                    <div class="grid--1-3 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">1fr</div><div class="grid-cell">3fr</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--3-1</code> (3:1 ratio)</div>
-                    <div class="grid--3-1 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">3fr</div><div class="grid-cell">1fr</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--3-1</code> (3:1 ratio)</div>
+                    <div class="grid--3-1 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">3fr</div><div class="grid-cell">1fr</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--2-3</code> (2:3 ratio)</div>
-                    <div class="grid--2-3 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">2fr</div><div class="grid-cell">3fr</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--2-3</code> (2:3 ratio)</div>
+                    <div class="grid--2-3 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">2fr</div><div class="grid-cell">3fr</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--3-2</code> (3:2 ratio)</div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--3-2</code> (3:2 ratio)</div>
                     <div class="grid--3-2 gap--xs"><div class="grid-cell">3fr</div><div class="grid-cell">2fr</div></div>
                 </div>
 
                 <h3>Auto-Fit Grids</h3>
-                <p style="color:var(--neutral-60);font-size:1.3rem;margin-bottom:1rem">Responsive grids using <code>auto-fit</code> + <code>minmax()</code>. Columns wrap automatically. Available: <code>.grid--auto-2</code> through <code>.grid--auto-12</code>. Add <code>.grid--auto-rows</code> to equalize row heights.</p>
+                <p style="color:var(--neutral-60);font-size:var(--text-s);margin-bottom:var(--space-xs)">Responsive grids using <code>auto-fit</code> + <code>minmax()</code>. Columns wrap automatically. Available: <code>.grid--auto-2</code> through <code>.grid--auto-12</code>. Add <code>.grid--auto-rows</code> to equalize row heights.</p>
                 <div class="demo-box">
-                    <div style="margin-bottom:0.4rem"><code>.grid--auto-3</code></div>
-                    <div class="grid--auto-3 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--auto-3</code></div>
+                    <div class="grid--auto-3 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.grid--auto-4</code></div>
-                    <div class="grid--auto-4 gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div><div class="grid-cell">7</div><div class="grid-cell">8</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--auto-4</code></div>
+                    <div class="grid--auto-4 gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div><div class="grid-cell">7</div><div class="grid-cell">8</div></div>
 
-                    <p style="margin:0 0 0.4rem;color:var(--neutral-60);font-size:1.3rem">Ratio auto-fit variants keep fixed proportions instead of equal columns:</p>
-                    <div style="margin-bottom:0.4rem"><code>.grid--auto-1-2</code> (1:2 ratio, auto-fit)</div>
+                    <p style="margin:0 0 var(--space-4xs);color:var(--neutral-60);font-size:var(--text-s)">Ratio auto-fit variants keep fixed proportions instead of equal columns:</p>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--auto-1-2</code> (1:2 ratio, auto-fit)</div>
                     <div class="grid--auto-1-2 gap--xs"><div class="grid-cell">1fr</div><div class="grid-cell">2fr</div></div>
                 </div>
 
                 <h3>Grid Rows</h3>
-                <p style="color:var(--neutral-60);font-size:1.3rem;margin-bottom:1rem">Define explicit row counts on a grid container. Available: <code>.grid-rows--1</code> through <code>.grid-rows--12</code>. Responsive: <code>.grid-rows--l-2</code>, <code>.grid-rows--m-1</code>, etc.</p>
+                <p style="color:var(--neutral-60);font-size:var(--text-s);margin-bottom:var(--space-xs)">Define explicit row counts on a grid container. Available: <code>.grid-rows--1</code> through <code>.grid-rows--12</code>. Responsive: <code>.grid-rows--l-2</code>, <code>.grid-rows--m-1</code>, etc.</p>
                 <div class="demo-box">
-                    <div style="margin-bottom:0.4rem"><code>.grid--3 .grid-rows--2</code> (3 columns, 2 defined rows)</div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.grid--3 .grid-rows--2</code> (3 columns, 2 defined rows)</div>
                     <div class="grid--3 grid-rows--2 gap--xs"><div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div><div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div></div>
                 </div>
 
                 <h3>Alternating Layouts</h3>
-                <p style="color:var(--neutral-60);font-size:1.3rem;margin-bottom:1rem">Apply to a parent container to visually flip even-numbered child ratio grids (e.g. <code>.grid--1-2</code> becomes <code>.grid--2-1</code>). Uses <code>min-width</code> breakpoints. Available: <code>.grid--alternate-s</code>, <code>.grid--alternate-m</code>, <code>.grid--alternate-l</code>, <code>.grid--alternate-xl</code>.</p>
+                <p style="color:var(--neutral-60);font-size:var(--text-s);margin-bottom:var(--space-xs)">Apply to a parent container to visually flip even-numbered child ratio grids (e.g. <code>.grid--1-2</code> becomes <code>.grid--2-1</code>). Uses <code>min-width</code> breakpoints. Available: <code>.grid--alternate-s</code>, <code>.grid--alternate-m</code>, <code>.grid--alternate-l</code>, <code>.grid--alternate-xl</code>.</p>
                 <div class="demo-box">
-                    <div class="grid--alternate-l" style="display:flex;flex-direction:column;gap:0.8rem">
+                    <div class="grid--alternate-l" style="display:flex;flex-direction:column;gap:var(--space-2xs)">
                         <div class="grid--2-1 gap--xs">
-                            <div class="grid-cell" style="padding:1rem">Content (2fr) — odd row, unchanged</div>
-                            <div class="grid-cell" style="padding:1rem">Image (1fr)</div>
+                            <div class="grid-cell" style="padding:var(--space-xs)">Content (2fr) — odd row, unchanged</div>
+                            <div class="grid-cell" style="padding:var(--space-xs)">Image (1fr)</div>
                         </div>
                         <div class="grid--2-1 gap--xs">
-                            <div class="grid-cell" style="padding:1rem">Content (2fr) — even row, flips to 1-2</div>
-                            <div class="grid-cell" style="padding:1rem">Image (1fr)</div>
+                            <div class="grid-cell" style="padding:var(--space-xs)">Content (2fr) — even row, flips to 1-2</div>
+                            <div class="grid-cell" style="padding:var(--space-xs)">Image (1fr)</div>
                         </div>
                     </div>
                 </div>
-                <p style="color:var(--neutral-60);font-size:1.3rem">Responsive fixed grids: <code>.grid--xl-2</code>, <code>.grid--l-1</code>, <code>.grid--m-2</code>, <code>.grid--s-1</code></p>
+                <p style="color:var(--neutral-60);font-size:var(--text-s)">Responsive fixed grids: <code>.grid--xl-2</code>, <code>.grid--l-1</code>, <code>.grid--m-2</code>, <code>.grid--s-1</code></p>
             </section>
 
             <!-- ============================
@@ -952,25 +1038,25 @@
                 <p class="section-desc">Direction, wrap, and grow utilities for flex containers.</p>
 
                 <div class="demo-box">
-                    <div style="margin-bottom:0.4rem"><code>.flex--row</code></div>
-                    <div class="flex--row gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.flex--row</code></div>
+                    <div class="flex--row gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.flex--col</code></div>
-                    <div class="flex--col gap--xs" style="margin-bottom:1.4rem;max-width:20rem"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.flex--col</code></div>
+                    <div class="flex--col gap--xs" style="margin-bottom:var(--space-s);max-width:20rem"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.flex--row-reverse</code></div>
-                    <div class="flex--row-reverse gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.flex--row-reverse</code></div>
+                    <div class="flex--row-reverse gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.flex--col-reverse</code></div>
-                    <div class="flex--col-reverse gap--xs" style="margin-bottom:1.4rem;max-width:20rem"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.flex--col-reverse</code></div>
+                    <div class="flex--col-reverse gap--xs" style="margin-bottom:var(--space-s);max-width:20rem"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.flex--wrap</code></div>
-                    <div class="flex--row flex--wrap gap--xs" style="margin-bottom:1.4rem"><div class="grid-cell" style="width:30%">A</div><div class="grid-cell" style="width:30%">B</div><div class="grid-cell" style="width:30%">C</div><div class="grid-cell" style="width:30%">D</div></div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.flex--wrap</code></div>
+                    <div class="flex--row flex--wrap gap--xs" style="margin-bottom:var(--space-s)"><div class="grid-cell" style="width:30%">A</div><div class="grid-cell" style="width:30%">B</div><div class="grid-cell" style="width:30%">C</div><div class="grid-cell" style="width:30%">D</div></div>
 
-                    <div style="margin-bottom:0.4rem"><code>.flex--grow</code> — children share available space equally</div>
+                    <div style="margin-bottom:var(--space-4xs)"><code>.flex--grow</code> — children share available space equally</div>
                     <div class="flex--row flex--grow gap--xs"><div class="grid-cell">A</div><div class="grid-cell">B</div><div class="grid-cell">C</div></div>
                 </div>
-                <p style="color:var(--neutral-60);font-size:1.3rem">Responsive direction: <code>.flex--col-l</code>, <code>.flex--row-m</code>, <code>.flex--col-reverse-s</code>, <code>.flex--row-reverse-xl</code>. Note: <code>.flex--wrap</code> and <code>.flex--grow</code> have no responsive variants.</p>
+                <p style="color:var(--neutral-60);font-size:var(--text-s)">Responsive direction: <code>.flex--col-l</code>, <code>.flex--row-m</code>, <code>.flex--col-reverse-s</code>, <code>.flex--row-reverse-xl</code>. Note: <code>.flex--wrap</code> and <code>.flex--grow</code> have no responsive variants.</p>
             </section>
 
             <!-- ============================
@@ -981,38 +1067,38 @@
                 <p class="section-desc">Flex-based centering utilities for quick alignment.</p>
 
                 <div class="demo-box">
-                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.6rem">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:var(--space-s)">
                         <div>
-                            <div style="margin-bottom:0.4rem"><code>.center--all</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.center--all</code></div>
                             <div class="center-demo-box center--all"><div class="center-demo-child">all</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.4rem"><code>.center--x</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.center--x</code></div>
                             <div class="center-demo-box center--x"><div class="center-demo-child">x</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.4rem"><code>.center--y</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.center--y</code></div>
                             <div class="center-demo-box center--y"><div class="center-demo-child">y</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.4rem"><code>.center--left</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.center--left</code></div>
                             <div class="center-demo-box center--left"><div class="center-demo-child">left</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.4rem"><code>.center--right</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.center--right</code></div>
                             <div class="center-demo-box center--right"><div class="center-demo-child">right</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.4rem"><code>.center--top</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.center--top</code></div>
                             <div class="center-demo-box center--top"><div class="center-demo-child">top</div></div>
                         </div>
                         <div>
-                            <div style="margin-bottom:0.4rem"><code>.center--bottom</code></div>
+                            <div style="margin-bottom:var(--space-4xs)"><code>.center--bottom</code></div>
                             <div class="center-demo-box center--bottom"><div class="center-demo-child">bottom</div></div>
                         </div>
                     </div>
                 </div>
-                <p style="color:var(--neutral-60);font-size:1.3rem">Responsive: <code>.center--all-l</code>, <code>.center--left-m</code>, <code>.center--x-s</code></p>
+                <p style="color:var(--neutral-60);font-size:var(--text-s)">Responsive: <code>.center--all-l</code>, <code>.center--left-m</code>, <code>.center--x-s</code></p>
             </section>
 
             <!-- ============================
@@ -1023,8 +1109,8 @@
                 <p class="section-desc">Column/row span, start, and end utilities for precise grid placement.</p>
 
                 <div class="demo-box">
-                    <div style="margin-bottom:0.4rem">Column spanning example:</div>
-                    <div class="grid--4 gap--xs" style="margin-bottom:1.4rem">
+                    <div style="margin-bottom:var(--space-4xs)">Column spanning example:</div>
+                    <div class="grid--4 gap--xs" style="margin-bottom:var(--space-s)">
                         <div class="grid-cell col-span--2">.col-span--2</div>
                         <div class="grid-cell">3</div>
                         <div class="grid-cell">4</div>
@@ -1046,7 +1132,7 @@
                         <tr><td><code>.order--last</code></td><td>order: 999</td><td>—</td></tr>
                     </tbody>
                 </table>
-                <p style="color:var(--neutral-60);font-size:1.3rem">All have responsive variants: <code>.col-span--xl-2</code>, <code>.col-span--l-all</code>, etc.</p>
+                <p style="color:var(--neutral-60);font-size:var(--text-s)">All have responsive variants: <code>.col-span--xl-2</code>, <code>.col-span--l-all</code>, etc.</p>
             </section>
 
             <!-- ============================
@@ -1117,46 +1203,46 @@
             <section class="doc-section" id="aspect">
                 <h2>Aspect Ratios</h2>
                 <p class="section-desc">Predefined aspect ratio utilities. Images/videos automatically get <code>object-fit: cover</code>.</p>
-                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:1.6rem;align-items:start">
+                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:var(--space-s);align-items:start">
                     <div>
                         <div class="aspect-demo-box aspect--1-1">1:1</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--1-1</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--1-1</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--16-9">16:9</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--16-9</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--16-9</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--4-3">4:3</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--4-3</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--4-3</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--3-2">3:2</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--3-2</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--3-2</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--21-9">21:9</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--21-9</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--21-9</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--2-1">2:1</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--2-1</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--2-1</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--2-3" style="width:8rem">2:3</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--2-3</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--2-3</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--1-2" style="width:8rem">1:2</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--1-2</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--1-2</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--3-4" style="width:8rem">3:4</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--3-4</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--3-4</code></div>
                     </div>
                     <div>
                         <div class="aspect-demo-box aspect--9-16" style="width:6rem">9:16</div>
-                        <div style="text-align:center;margin-top:0.4rem"><code>.aspect--9-16</code></div>
+                        <div style="text-align:center;margin-top:var(--space-4xs)"><code>.aspect--9-16</code></div>
                     </div>
                 </div>
             </section>
@@ -1193,7 +1279,7 @@
             <section class="doc-section" id="opacity">
                 <h2>Opacity</h2>
                 <p class="section-desc">Control element transparency.</p>
-                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:end">
+                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:var(--space-xs);align-items:end">
                     <div style="text-align:center"><div class="opacity-chip opacity--0">0</div><code>.opacity--0</code></div>
                     <div style="text-align:center"><div class="opacity-chip opacity--5">5</div><code>.opacity--5</code></div>
                     <div style="text-align:center"><div class="opacity-chip opacity--10">10</div><code>.opacity--10</code></div>
@@ -1212,25 +1298,25 @@
             <section class="doc-section" id="line-clamp">
                 <h2>Line Clamp</h2>
                 <p class="section-desc">Truncate text to a specific number of lines.</p>
-                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:1.6rem">
+                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:var(--space-s)">
                     <div>
-                        <div style="margin-bottom:0.4rem"><code>.line-clamp--1</code></div>
+                        <div style="margin-bottom:var(--space-4xs)"><code>.line-clamp--1</code></div>
                         <div class="clamp-demo line-clamp--1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</div>
                     </div>
                     <div>
-                        <div style="margin-bottom:0.4rem"><code>.line-clamp--2</code></div>
+                        <div style="margin-bottom:var(--space-4xs)"><code>.line-clamp--2</code></div>
                         <div class="clamp-demo line-clamp--2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</div>
                     </div>
                     <div>
-                        <div style="margin-bottom:0.4rem"><code>.line-clamp--3</code></div>
+                        <div style="margin-bottom:var(--space-4xs)"><code>.line-clamp--3</code></div>
                         <div class="clamp-demo line-clamp--3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</div>
                     </div>
                     <div>
-                        <div style="margin-bottom:0.4rem"><code>.line-clamp--4</code></div>
+                        <div style="margin-bottom:var(--space-4xs)"><code>.line-clamp--4</code></div>
                         <div class="clamp-demo line-clamp--4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
                     </div>
                     <div>
-                        <div style="margin-bottom:0.4rem"><code>.line-clamp--5</code></div>
+                        <div style="margin-bottom:var(--space-4xs)"><code>.line-clamp--5</code></div>
                         <div class="clamp-demo line-clamp--5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                     </div>
                 </div>
@@ -1261,22 +1347,22 @@
                 <p class="section-desc">Quick border utilities using neutral color tokens.</p>
 
                 <h3>Borders</h3>
-                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:1.2rem">
-                    <div class="border" style="padding:1.2rem;border-radius:var(--radius-s)"><code>.border</code></div>
-                    <div class="border-top" style="padding:1.2rem"><code>.border-top</code></div>
-                    <div class="border-bottom" style="padding:1.2rem"><code>.border-bottom</code></div>
-                    <div class="border-left" style="padding:1.2rem"><code>.border-left</code></div>
-                    <div class="border-right" style="padding:1.2rem"><code>.border-right</code></div>
-                    <div class="border-block" style="padding:1.2rem"><code>.border-block</code></div>
-                    <div class="border-inline" style="padding:1.2rem"><code>.border-inline</code></div>
-                    <div class="border border--light" style="padding:1.2rem;border-radius:var(--radius-s)"><code>.border--light</code></div>
-                    <div class="border border--dark" style="padding:1.2rem;border-radius:var(--radius-s)"><code>.border--dark</code></div>
-                    <div class="border border--none" style="padding:1.2rem;border-radius:var(--radius-s);background:var(--neutral-12)"><code>.border--none</code></div>
+                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:var(--space-xs)">
+                    <div class="border" style="padding:var(--space-xs);border-radius:var(--radius-s)"><code>.border</code></div>
+                    <div class="border-top" style="padding:var(--space-xs)"><code>.border-top</code></div>
+                    <div class="border-bottom" style="padding:var(--space-xs)"><code>.border-bottom</code></div>
+                    <div class="border-left" style="padding:var(--space-xs)"><code>.border-left</code></div>
+                    <div class="border-right" style="padding:var(--space-xs)"><code>.border-right</code></div>
+                    <div class="border-block" style="padding:var(--space-xs)"><code>.border-block</code></div>
+                    <div class="border-inline" style="padding:var(--space-xs)"><code>.border-inline</code></div>
+                    <div class="border border--light" style="padding:var(--space-xs);border-radius:var(--radius-s)"><code>.border--light</code></div>
+                    <div class="border border--dark" style="padding:var(--space-xs);border-radius:var(--radius-s)"><code>.border--dark</code></div>
+                    <div class="border border--none" style="padding:var(--space-xs);border-radius:var(--radius-s);background:var(--neutral-12)"><code>.border--none</code></div>
                 </div>
 
                 <h3>Dividers</h3>
                 <div class="demo-box">
-                    <div class="divider-bottom" style="margin-bottom:1rem">
+                    <div class="divider-bottom" style="margin-bottom:var(--space-xs)">
                         <code>.divider-bottom</code> — Content above the divider
                     </div>
                     <div class="divider-top">
@@ -1306,10 +1392,10 @@
                 <h2>Section Padding</h2>
                 <p class="section-desc">Vertical (block) padding for page sections using the section spacing scale.</p>
                 <div class="demo-box">
-                    <div class="padding-demo-outer padding--xs" style="margin-bottom:1rem"><div class="padding-demo-inner">.padding--xs</div></div>
-                    <div class="padding-demo-outer padding--s" style="margin-bottom:1rem"><div class="padding-demo-inner">.padding--s</div></div>
-                    <div class="padding-demo-outer padding--m" style="margin-bottom:1rem"><div class="padding-demo-inner">.padding--m</div></div>
-                    <div class="padding-demo-outer padding--l" style="margin-bottom:1rem"><div class="padding-demo-inner">.padding--l</div></div>
+                    <div class="padding-demo-outer padding--xs" style="margin-bottom:var(--space-xs)"><div class="padding-demo-inner">.padding--xs</div></div>
+                    <div class="padding-demo-outer padding--s" style="margin-bottom:var(--space-xs)"><div class="padding-demo-inner">.padding--s</div></div>
+                    <div class="padding-demo-outer padding--m" style="margin-bottom:var(--space-xs)"><div class="padding-demo-inner">.padding--m</div></div>
+                    <div class="padding-demo-outer padding--l" style="margin-bottom:var(--space-xs)"><div class="padding-demo-inner">.padding--l</div></div>
                     <div class="padding-demo-outer padding--xl"><div class="padding-demo-inner">.padding--xl</div></div>
                 </div>
             </section>
@@ -1320,7 +1406,7 @@
             <section class="doc-section" id="color-overrides">
                 <h2>Color Overrides</h2>
                 <p class="section-desc">Apply a color family to an element, remapping brand tokens. Use <code>.color-{name}</code> classes.</p>
-                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:0.8rem" id="color-override-demo"></div>
+                <div class="demo-box" style="display:flex;flex-wrap:wrap;gap:var(--space-2xs)" id="color-override-demo"></div>
             </section>
 
             <!-- ============================
@@ -1330,28 +1416,28 @@
                 <h2>Dark / Light Mode</h2>
                 <p class="section-desc">Toggle via <code>html[data-color-mode="dark"]</code> attribute or <code>.dark</code> / <code>.light</code> classes. Neutral and color scales invert automatically.</p>
 
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.6rem">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-s)">
                     <div class="mode-demo light" style="background:var(--neutral-10)">
-                        <div style="font-weight:600;margin-bottom:1rem;font-size:1.5rem;color:var(--neutral-90)">Light Mode</div>
-                        <div style="background:var(--neutral-5);padding:1rem;border-radius:var(--radius-s);margin-bottom:0.8rem;color:var(--neutral-90)">Card on neutral-5</div>
-                        <div style="background:var(--color-60);color:white;padding:0.8rem 1.2rem;border-radius:var(--radius-s);display:inline-block">Primary Button</div>
+                        <div style="font-weight:600;margin-bottom:var(--space-xs);font-size:var(--text-m);color:var(--neutral-90)">Light Mode</div>
+                        <div style="background:var(--neutral-5);padding:var(--space-xs);border-radius:var(--radius-s);margin-bottom:var(--space-2xs);color:var(--neutral-90)">Card on neutral-5</div>
+                        <div style="background:var(--color-60);color:var(--neutral-5);padding:var(--space-2xs) var(--space-xs);border-radius:var(--radius-s);display:inline-block">Primary Button</div>
                     </div>
                     <div class="mode-demo dark" style="background:var(--neutral-10)">
-                        <div style="font-weight:600;margin-bottom:1rem;font-size:1.5rem;color:var(--neutral-90)">Dark Mode</div>
-                        <div style="background:var(--neutral-5);padding:1rem;border-radius:var(--radius-s);margin-bottom:0.8rem;color:var(--neutral-90)">Card on neutral-5</div>
-                        <div style="background:var(--color-60);color:white;padding:0.8rem 1.2rem;border-radius:var(--radius-s);display:inline-block">Primary Button</div>
+                        <div style="font-weight:600;margin-bottom:var(--space-xs);font-size:var(--text-m);color:var(--neutral-90)">Dark Mode</div>
+                        <div style="background:var(--neutral-5);padding:var(--space-xs);border-radius:var(--radius-s);margin-bottom:var(--space-2xs);color:var(--neutral-90)">Card on neutral-5</div>
+                        <div style="background:var(--color-60);color:var(--neutral-5);padding:var(--space-2xs) var(--space-xs);border-radius:var(--radius-s);display:inline-block">Primary Button</div>
                     </div>
                 </div>
 
                 <h3>Neutral Tone Family Switching</h3>
                 <p class="section-desc">Apply <code>.neutral-{family}</code> to change the neutral palette globally or per-section.</p>
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin-top:1rem">
-                    <div class="neutral-warm" style="background:var(--neutral-18);padding:1.4rem;border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Warm</strong> (default)<br><code>.neutral-warm</code></div>
-                    <div class="neutral-cool" style="background:var(--neutral-18);padding:1.4rem;border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Cool</strong><br><code>.neutral-cool</code></div>
-                    <div class="neutral-slate" style="background:var(--neutral-18);padding:1.4rem;border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Slate</strong><br><code>.neutral-slate</code></div>
-                    <div class="neutral-gray" style="background:var(--neutral-18);padding:1.4rem;border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Gray</strong><br><code>.neutral-gray</code></div>
-                    <div class="neutral-onyx" style="background:var(--neutral-18);padding:1.4rem;border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Onyx</strong><br><code>.neutral-onyx</code></div>
-                    <div class="neutral-mono" style="background:var(--neutral-18);padding:1.4rem;border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Mono</strong><br><code>.neutral-mono</code></div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:var(--space-xs);margin-top:var(--space-xs)">
+                    <div class="neutral-warm" style="background:var(--neutral-18);padding:var(--space-s);border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Warm</strong> (default)<br><code>.neutral-warm</code></div>
+                    <div class="neutral-cool" style="background:var(--neutral-18);padding:var(--space-s);border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Cool</strong><br><code>.neutral-cool</code></div>
+                    <div class="neutral-slate" style="background:var(--neutral-18);padding:var(--space-s);border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Slate</strong><br><code>.neutral-slate</code></div>
+                    <div class="neutral-gray" style="background:var(--neutral-18);padding:var(--space-s);border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Gray</strong><br><code>.neutral-gray</code></div>
+                    <div class="neutral-onyx" style="background:var(--neutral-18);padding:var(--space-s);border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Onyx</strong><br><code>.neutral-onyx</code></div>
+                    <div class="neutral-mono" style="background:var(--neutral-18);padding:var(--space-s);border-radius:var(--radius-m);color:var(--neutral-80)"><strong>Mono</strong><br><code>.neutral-mono</code></div>
                 </div>
             </section>
 
@@ -1447,7 +1533,7 @@
 
             colors.forEach(color => {
                 const row = document.createElement('div');
-                row.style.cssText = 'display:flex;align-items:center;gap:1rem;margin-bottom:0.6rem';
+                row.style.cssText = 'display:flex;align-items:center;gap:var(--space-xs);margin-bottom:0.6rem';
                 row.innerHTML = `<span class="swatch-row-label">${color}</span>
                     <div class="swatch-strip" style="flex:1">
                         ${shades.map(s => `<div class="swatch" style="background:var(--${color}-${s})"><span class="swatch-label">${s}</span></div>`).join('')}
@@ -1459,7 +1545,7 @@
             const semanticContainer = document.getElementById('semantic-colors-container');
             ['error','warning','success'].forEach(color => {
                 const row = document.createElement('div');
-                row.style.cssText = 'display:flex;align-items:center;gap:1rem;margin-bottom:0.6rem';
+                row.style.cssText = 'display:flex;align-items:center;gap:var(--space-xs);margin-bottom:0.6rem';
                 row.innerHTML = `<span class="swatch-row-label">${color}</span>
                     <div class="swatch-strip" style="flex:1">
                         ${shades.map(s => `<div class="swatch" style="background:var(--${color}-${s})"><span class="swatch-label">${s}</span></div>`).join('')}
@@ -1474,7 +1560,7 @@
 
             neutralFamilies.forEach(family => {
                 const row = document.createElement('div');
-                row.style.cssText = 'display:flex;align-items:center;gap:1rem;margin-bottom:0.6rem';
+                row.style.cssText = 'display:flex;align-items:center;gap:var(--space-xs);margin-bottom:0.6rem';
                 row.innerHTML = `<span class="swatch-row-label">${family}</span>
                     <div class="neutral-strip" style="flex:1">
                         ${neutralShades.map(s => `<div class="neutral-swatch" style="background:var(--neutral-${family}-${s})" title="${family}-${s}"></div>`).join('')}

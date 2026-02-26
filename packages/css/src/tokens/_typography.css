@@ -1,21 +1,22 @@
 :root {
-    --text-xs: clamp(1.23rem, calc(-0.11vw + 1.28rem), 1.11rem);
-    --text-s: clamp(1.31rem, calc(0.02vw + 1.3rem), 1.33rem);
-    --text-m: clamp(1.4rem, calc(0.18vw + 1.31rem), 1.6rem);
-    --text-l: clamp(1.49rem, calc(0.38vw + 1.31rem), 1.92rem);
-    --text-xl: clamp(1.59rem, calc(0.63vw + 1.29rem), 2.3rem);
-    --text-2xl: clamp(1.7rem, calc(0.45vw + 1.48rem), 2.2rem);
-    --text-3xl: clamp(1.81rem, calc(0.75vw + 1.45rem), 2.65rem);
-    --text-4xl: clamp(1.94rem, calc(1.13vw + 1.4rem), 3.2rem);
-    --text-5xl: clamp(2.07rem, calc(1.55vw + 1.33rem), 3.8rem);
-    --text-6xl: clamp(2.2rem, calc(2.14vw + 1.17rem), 4.6rem);
-    --text-7xl: clamp(2.35rem, calc(2.81vw + 1.0rem), 5.5rem);
-    --text-8xl: clamp(2.51rem, calc(3.65vw + 0.76rem), 6.6rem);
+    --text-xs: 1.23rem;
+    --text-s: 1.33rem;
+    --text-m: 1.60rem;
+    --text-l: 1.92rem;
+    --text-xl: 2.19rem;
+    --text-2xl: 2.46rem;
+    --text-3xl: 2.73rem;
+    --text-4xl: 3.0rem;
+    --text-5xl: 3.4rem;
+    --text-6xl: 3.8rem;
+    --text-7xl: 4.1rem;
+    --text-8xl: 4.5rem;
     --display-color: var(--neutral-90);
     --text-color: var(--neutral-90);
     --mono-color: var(--neutral-90);
-    --display-font: "Geist", sans-serif;
-    --body-font: "Geist", sans-serif;
+    --display-font: "Inter", sans-serif;
+    --body-font: "Inter", sans-serif;
+    --expressive-font: "Playfair Display", serif;
     --mono-font: "Roboto Mono", monospace;
     --display-font-family: var(--display-font);
     --heading-font-family: var(--display-font);
@@ -23,6 +24,7 @@
     --label-font-family: var(--body-font);
     --text-font-family: var(--body-font);
     --mono-font-family: var(--mono-font);
+    --expressive-font-family: var(--expressive-font);
     --display-l-font-size: var(--text-7xl);
     --display-m-font-size: var(--text-6xl);
     --display-s-font-size: var(--text-5xl);
@@ -84,4 +86,19 @@
     --grid-auto-10: repeat(auto-fit, minmax(min(100%, max(calc((var(--max-screen-width) - ((10 - 1) * var(--grid-gap))) / 10) * 0.7, (100% - (10 - 1) * var(--grid-gap)) / 10)), 1fr));
     --grid-auto-11: repeat(auto-fit, minmax(min(100%, max(calc((var(--max-screen-width) - ((11 - 1) * var(--grid-gap))) / 11) * 0.7, (100% - (11 - 1) * var(--grid-gap)) / 11)), 1fr));
     --grid-auto-12: repeat(auto-fit, minmax(min(100%, max(calc((var(--max-screen-width) - ((12 - 1) * var(--grid-gap))) / 12) * 0.7, (100% - (12 - 1) * var(--grid-gap)) / 12)), 1fr));
+}
+
+.responsive {
+    --text-xs: clamp(1.23rem, calc(-0.11vw + 1.28rem), 1.11rem);
+    --text-s: clamp(1.31rem, calc(0.02vw + 1.3rem), 1.33rem);
+    --text-m: clamp(1.4rem, calc(0.18vw + 1.31rem), 1.6rem);
+    --text-l: clamp(1.49rem, calc(0.38vw + 1.31rem), 1.92rem);
+    --text-xl: clamp(1.59rem, calc(0.64vw + 1.17rem), 2.19rem);
+    --text-2xl: clamp(1.70rem, calc(0.89vw + 1.04rem), 2.46rem);
+    --text-3xl: clamp(1.81rem, calc(1.15vw + 0.89rem), 2.73rem);
+    --text-4xl: clamp(2.43rem, calc(1.40vw + 0.76rem), 3.0rem);
+    --text-5xl: clamp(2.59rem, calc(2.05vw + 0.12rem), 3.4rem);
+    --text-6xl: clamp(2.75rem, calc(2.70vw - 0.52rem), 3.8rem);
+    --text-7xl: clamp(2.94rem, calc(3.35vw - 1.26rem), 4.1rem);
+    --text-8xl: clamp(3.14rem, calc(4.00vw - 1.90rem), 4.5rem);
 }
